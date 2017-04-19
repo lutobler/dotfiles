@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+bat() {
+    bat0=$(cat /sys/class/power_supply/BAT0/capacity)
+    bat1=$(cat /sys/class/power_supply/BAT1/capacity)
+    s0=$(cat /sys/class/power_supply/BAT0/status)
+    s1=$(cat /sys/class/power_supply/BAT1/status)
+    echo "BAT0: $bat0% ($s0), BAT1: $bat1% ($s1)"
+}
+
+temp() {
+    echo $(acpi -t | cut -d' ' -f4)°
+}
+
+pkg_orphans() {
+    if [[ ! -n $(pacman -Qdt) ]]; then
+        echo "No orphans to remove."
+    else
+        sudo pacman -Rns $(pacman -Qdtq)
+    fi
+}
+
+pkg_files() {
+	pacman -Ql $1 | less
+}
+
+pf() {
+    if [[ -z "$1" ]]; then
+        printf "Please provide magnet link\n"
+        return 1
+    fi
+    peerflix "$1" -kdnt --path=/var/tmp
+}

@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+
+# From: https://github.com/riobard/bash-powerline (modified)
+__powerline() {
+    # Unicode symbols
+    PWL_SEPERATOR='\ue0b0 '
+    GIT_BRANCH_SYMBOL='\ue0a0 '
+    GIT_BRANCH_CHANGED_SYMBOL='+'
+    GIT_NEED_PUSH_SYMBOL='\u2191'
+    GIT_NEED_PULL_SYMBOL='\u2193'
+
+    #FG COLORS
+    FG_BLACK="\[$(tput setaf 0)\]"   #BLACK
+    FG_BLUE="\[$(tput setaf 241)\]"  #GREY
+    FG_PURPLE="\[$(tput setaf 4)\]"  #BLUE
+    FG_WHITE="\[$(tput setaf 15)\]"  #WHITE
+
+    #BG COLORS
+    BG_BLACK="\[$(tput setab 0)\]"   #BLACK
+    BG_BLUE="\[$(tput setab 241)\]"  #GREY
+    BG_PURPLE="\[$(tput setab 4)\]"  #BLUE
+    BG_WHITE="\[$(tput setab 15)\]"  #WHITE
+
+    DIM="\[$(tput dim)\]"
+    REVERSE="\[$(tput rev)\]"
+    RESET="\[$(tput sgr0)\]"
+    BOLD="\[$(tput bold)\]"
+
+    GIT_INFO=""
+
+    __git_info() {
+        [ -x "$(which git)" ] || return     # git not found
+        local git_eng="env LANG=C git"      # force git output in English
+
+        # get current branch name or short SHA1 hash for detached head
+        local branch="$($git_eng symbolic-ref --short HEAD 2>/dev/null \
+            || $git_eng describe --tags --always 2>/dev/null)"
+        if [ -z "$branch" ]; then  # git branch not found
+            GIT_INFO=""
+            return
+        fi
+
+        local marks
+
+        # branch is modified?
+        [ -n "$($git_eng status --porcelain)" ] \
+            && marks+=" $GIT_BRANCH_CHANGED_SYMBOL"
+
+        # how many commits local branch is ahead/behind of remote?
+        local stat="$($git_eng status --porcelain --branch | grep '^##' | \
+            grep -o '\[.\+\]$')"
+
+        local aheadN="$(echo $stat | grep -o 'ahead [[:digit:]]\+' | \
+            grep -o '[[:digit:]]\+')"
+
+        local behindN="$(echo $stat | grep -o 'behind [[:digit:]]\+' | \
+            grep -o '[[:digit:]]\+')"
+
+        [ -n "$aheadN" ] && marks+=" $GIT_NEED_PUSH_SYMBOL$aheadN"
+        [ -n "$behindN" ] && marks+=" $GIT_NEED_PULL_SYMBOL$behindN"
+
+        # print the git branch segment without a trailing newline
+        GIT_INFO="$GIT_BRANCH_SYMBOL$branch$marks "
+    }
+
+    path_ps1() {
+        local path=$(echo $PWD | sed "s/\/home\/$(whoami)/~/")
+
+        if [[ $(echo "${#path}") -le 45 ]]; then
+            PS1="$BG_BLUE$FG_WHITE \w $RESET"
+        else
+            parent_dir=$(basename <<< echo "$(dirname "$PWD")")
+            PS1="$BG_BLUE$FG_WHITE ../$parent_dir/\W $RESET"
+        fi
+    }
+
+    ps1() {
+        # exit code
+        if [ $? -eq 0 ]; then
+            local BG_EXIT="\[$(tput setab 2)\]"   #GREEN
+            local FG_EXIT="\[$(tput setaf 2)\]"
+        else
+            local BG_EXIT="\[$(tput setab 1)\]"    #RED
+            local FG_EXIT="\[$(tput setaf 1)\]"
+        fi
+
+        PS_SYMBOL='$'
+        if [ $(whoami) == "root" ]; then
+            PS_SYMBOL='#'
+        fi
+
+        __git_info
+        path_ps1
+        if [ -n "$GIT_INFO" ]; then # git
+            PS1+="$FG_BLUE$BG_PURPLE$(printf "$PWL_SEPERATOR")$RESET"
+            PS1+="$BG_PURPLE$FG_BLACK$(printf "$GIT_INFO")$RESET"
+            PS1+="$BG_EXIT$FG_PURPLE$(printf "$PWL_SEPERATOR")$RESET"
+            PS1+="$BG_EXIT$FG_BLACK$PS_SYMBOL $RESET"
+            PS1+="$FG_EXIT$(printf "$PWL_SEPERATOR")$RESET"
+        else # no git
+            PS1+="$BG_EXIT$FG_BLUE$(printf "$PWL_SEPERATOR")$RESET"
+            PS1+="$BG_EXIT$FG_BLACK$PS_SYMBOL $RESET"
+            PS1+="$FG_EXIT$(printf "$PWL_SEPERATOR")$RESET"
+        fi
+    }
+
+    PROMPT_COMMAND=ps1
+}
+
+__powerline
+unset __powerline

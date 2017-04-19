@@ -1,0 +1,26 @@
+#!/bin/sh
+
+alias fmfp='cd ~/annex/eth/Semester\ 4/FMFP'
+alias osnet='cd ~/annex/eth/Semester\ 4/OSNET'
+alias dmdb='cd ~/annex/eth/Semester\ 4/DMDB'
+alias sae='cd ~/annex/eth/Semester\ 4/SAE'
+
+alias sp='systemctl suspend'
+alias hc='herbstclient'
+alias r='ranger'
+alias t='task'
+alias v='nvim'
+alias ls='ls -h --group-directories-first --color=auto'
+alias la='\ls -lah --group-directories-first --color=auto'
+alias c='cmake . && make clean && make'
+alias tmux="env TERM=xterm-256color tmux"
+alias dbg='coredumpctl gdb'
+alias torrents='TERM=xterm ssh alarm@luke.root.sx -t tmux a'
+alias filebin='sshfs files@alternative.vsos.ethz.ch: $HOME/theAlternative/filebin;cd $HOME/theAlternative/filebin'
+alias ufilebin='fusermount -u $HOME/theAlternative/filebin'
+alias octave='octave --no-gui'
+alias tortuga='pirate-get -C "peerflix %s -k -d -n -t --path=/var/tmp"'
+alias rpi='TERM=xterm ssh alarm@luke.root.sx'
+alias rpifs='sshfs alarm@luke.root.sx:/home/alarm ~/mnt/rpi -o transform_symlinks -o follow_symlinks'
+alias desktop='TERM=xterm ssh luke@arch.home'
+alias desktopfs='sshfs luke@arch.home:/home/luke ~/mnt/desktop -o transform_symlinks -o follow_symlinks'

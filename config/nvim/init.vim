@@ -105,7 +105,7 @@ set showcmd
 set shiftwidth=4
 set tabstop=4
 set smarttab
-" set expandtab
+set expandtab
 set cursorline
 set laststatus=2
 set smartindent

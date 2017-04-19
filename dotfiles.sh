@@ -6,6 +6,7 @@
 readonly sources=(
     "config/dunst, .config/dunst"
     "config/nvim, .config/nvim"
+    "config/herbstluftwm, .config/herbstluftwm"
     "config/redshift.conf, .config/redshift.conf"
     "bash.d, bash.d"
     ".bashrc, .bashrc"

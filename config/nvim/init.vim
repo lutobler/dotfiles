@@ -177,7 +177,7 @@ autocmd FileType xdefaults setlocal commentstring=!\ %s
 autocmd FileType cmake setlocal commentstring=#\ %s
 
 " other
-autocmd! BufWritePost * Neomake!
+autocmd! BufWritePost * Neomake
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert

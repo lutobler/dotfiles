@@ -24,3 +24,4 @@ alias rpi='TERM=xterm ssh alarm@luke.root.sx'
 alias rpifs='sshfs alarm@luke.root.sx:/home/alarm ~/mnt/rpi -o transform_symlinks -o follow_symlinks'
 alias desktop='TERM=xterm ssh luke@arch.home'
 alias desktopfs='sshfs luke@arch.home:/home/luke ~/mnt/desktop -o transform_symlinks -o follow_symlinks'
+alias 5xfs="jmtpfs ~/mnt/5x"

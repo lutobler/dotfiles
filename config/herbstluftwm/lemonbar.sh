@@ -17,8 +17,8 @@ update_interval=20
 datetime=""
 battery=""
 temp=""
-# volume=""
-# muted=""
+volume=""
+muted=""
 tags=""
 
 # colors
@@ -28,8 +28,8 @@ blackfg="%{F#000000}"
 blackbg="%{B#000000}"
 redfg="%{F#ff0000}"
 redbg="%{B#ff0000}"
-greenfg="%{F#90c466}"
-greenbg="%{B#90c466}"
+greenfg="%{F#9FBC00}"
+greenbg="%{B#9FBC00}"
 greyfg="%{F#8c8c8c}"
 greybg="%{B#8c8c8c}"
 stdcol="$whitefg$blackbg"
@@ -52,6 +52,9 @@ update_vars() {
 	battery="BAT0: $(cat /sys/class/power_supply/BAT0/capacity)% / "
     battery+="BAT1: $(cat /sys/class/power_supply/BAT1/capacity)%"
     temp="CPU $(acpi -t | cut -d' ' -f4)°C"
+    read -ra pulsehook <<< "$($HOME/scripts/pulseaudioctl.sh hlwm_hook)"
+    volume="${pulsehook[1]}"
+    muted="${pulsehook[2]}"
 }
 
 update_tags() {
@@ -91,15 +94,23 @@ event_handler() {
 
         # left aligned
         echo -n "%{l}"
-        echo -n "$tags"
-        echo -n " $separator  $stdcol"
+        echo -n "$tags "
+        echo -n "$separator  $stdcol"
         echo -n "$windowtitle"
 
         # right aligned
         echo -n "%{r}$stdcol"
-        echo -n "$temp  $separator  "
-        echo -n "$battery $separator  "
-        echo -n "$datetime  "
+        echo -n "$temp  $separator  "       # temperature
+        echo -n "$battery  $separator  "    # battery
+
+        # audio volume
+        if [[ "$muted" != "muted" ]]; then
+            echo -n "VOL $volume%  $separator  "
+        else
+            echo -n "VOL $volume% (muted)  $separator  "
+        fi
+
+        echo -n "$datetime  "               # date/time
         echo
 
         # wait for the next event
@@ -111,6 +122,10 @@ event_handler() {
                 ;;
             bar_update)
                 update_vars
+                ;;
+            pulseaudio_key)
+                volume="${cmd[1]}"
+                muted="${cmd[2]}"
                 ;;
             quit_panel|reload)
                 return 0

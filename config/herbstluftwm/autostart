@@ -94,8 +94,10 @@ hc keybind $Mod-z jumpto urgent
 font="Inconsolata for Powerline"
 hc keybind $Mod-m spawn qutebrowser --backend webengine
 hc keybind $Mod-n spawn telegram-desktop
-hc keybind $Mod-u spawn dmenu_run -b -fn "$font" -p ">>>" -sb "#6381e2"
-hc keybind $Mod-i spawn passmenu --type -b -fn "$font" -p ">>>" -sb "#e26363"
+# hc keybind $Mod-u spawn dmenu_run -b -fn "$font" -p ">>>" -sb "#6381e2"
+hc keybind $Mod-u spawn rofi -show run
+# hc keybind $Mod-i spawn passmenu --type -b -fn "$font" -p ">>>" -sb "#e26363"
+hc keybind $Mod-i spawn rofi-pass
 hc keybind $Mod-a spawn $HOME/scripts/screenshot.sh sel
 hc keybind $Mod-Shift-a spawn $HOME/scripts/screenshot.sh selxsel
 

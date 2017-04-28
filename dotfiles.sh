@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Deploy dotfiless as symlinks and test for their correctness
+
 # Format "<source file relative to $PWD>, <target file relative to $HOME>"
 # If a directory, a target directory will be created and everything in the
 # source symlinked into it.

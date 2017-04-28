@@ -20,6 +20,7 @@ temp=""
 volume=""
 muted=""
 tags=""
+linux=""
 
 # colors
 whitefg="%{F#ffffff}"
@@ -55,6 +56,7 @@ update_vars() {
     read -ra pulsehook <<< "$($HOME/scripts/pulseaudioctl.sh hlwm_hook)"
     volume="${pulsehook[1]}"
     muted="${pulsehook[2]}"
+    linux="LINUX $(uname -r)"
 }
 
 update_tags() {
@@ -100,6 +102,7 @@ event_handler() {
 
         # right aligned
         echo -n "%{r}$stdcol"
+        echo -n "$linux  $separator  "       # kernel version
         echo -n "$temp  $separator  "       # temperature
         echo -n "$battery  $separator  "    # battery
 

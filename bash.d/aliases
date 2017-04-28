@@ -25,3 +25,4 @@ alias rpifs='sshfs alarm@luke.root.sx:/home/alarm ~/mnt/rpi -o transform_symlink
 alias desktop='TERM=xterm ssh luke@arch.home'
 alias desktopfs='sshfs luke@arch.home:/home/luke ~/mnt/desktop -o transform_symlinks -o follow_symlinks'
 alias 5xfs="jmtpfs ~/mnt/5x"
+alias fieri="feh --bg-scale $HOME/annex/wallpaper/1491756375892.gif"

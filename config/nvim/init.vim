@@ -1,12 +1,10 @@
 call plug#begin('~/.config/nvim/plugged')
 
-" tim pope
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
-Plug 'jiangmiao/auto-pairs'
 
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
@@ -138,8 +136,8 @@ inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
 nnoremap vrc :e ~/.config/nvim/init.vim<CR>
 nnoremap xrc :e ~/.Xresources<CR>
 nnoremap brc :e ~/.bashrc<CR>
-nnoremap irc :e ~/.i3/config<CR>
-nnoremap frc :e ~/.config/fish/config.fish<CR>
+nnoremap hrc :e ~/.config/herbstluftwm/autostart
+nnoremap lrc :e ~/.config/herbstluftwm/lemonbar.sh
 
 " terminal keybindings for neovim
 tnoremap <C-w>h <C-\><C-n><C-w>h

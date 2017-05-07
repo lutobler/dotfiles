@@ -6,7 +6,7 @@ urxvtd -q -f -o &
 redshift &
 dunst &
 ~/scripts/wallpaper.sh &
-unclutter &
+unclutter -idle 3 &
 
 xset +fp $HOME/.fonts
 setxkbmap ch

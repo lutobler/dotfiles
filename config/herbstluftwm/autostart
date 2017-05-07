@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# this is a simple config for herbstluftwm
+# herbstluftwm config
 
 hc() { herbstclient "$@"; }
 
@@ -48,8 +48,8 @@ hc keybind $Mod-Control-k resize up +$resizestep
 hc keybind $Mod-Control-l resize right +$resizestep
 
 # tags
-tag_names=( {1..10})
-tag_keys=( {1..9} 0)
+tag_names=( {1..10} "f1" "f2" "f3" "f4" )
+tag_keys=( {1..9} 0 "F1" "F2" "F3" "F4" )
 
 hc rename default "${tag_names[0]}" || true
 for i in ${!tag_names[@]} ; do
@@ -91,13 +91,11 @@ hc keybind $Mod-Tab cycle +1
 hc keybind $Mod-Shift-Tab cycle -1
 hc keybind $Mod-z jumpto urgent
 
-font="Inconsolata for Powerline"
 hc keybind $Mod-m spawn qutebrowser --backend webengine
 hc keybind $Mod-n spawn telegram-desktop
-# hc keybind $Mod-u spawn dmenu_run -b -fn "$font" -p ">>>" -sb "#6381e2"
 hc keybind $Mod-u spawn rofi -show run
-# hc keybind $Mod-i spawn passmenu --type -b -fn "$font" -p ">>>" -sb "#e26363"
 hc keybind $Mod-i spawn rofi-pass
+hc keybind $Mod-minus spawn $HOME/scripts/rofi_pdf.sh "$HOME/annex/eth/Semester 4"
 hc keybind $Mod-a spawn $HOME/scripts/screenshot.sh sel
 hc keybind $Mod-Shift-a spawn $HOME/scripts/screenshot.sh selxsel
 
@@ -170,3 +168,5 @@ panel=$HOME/.config/herbstluftwm/lemonbar.sh
 for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     "$panel" $monitor &
 done
+
+$HOME/scripts/indicator-kdeconnect.sh &

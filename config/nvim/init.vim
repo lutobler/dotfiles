@@ -134,10 +134,6 @@ inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
 
 " common files
 nnoremap vrc :e ~/.config/nvim/init.vim<CR>
-nnoremap xrc :e ~/.Xresources<CR>
-nnoremap brc :e ~/.bashrc<CR>
-nnoremap hrc :e ~/.config/herbstluftwm/autostart
-nnoremap lrc :e ~/.config/herbstluftwm/lemonbar.sh
 
 " terminal keybindings for neovim
 tnoremap <C-w>h <C-\><C-n><C-w>h

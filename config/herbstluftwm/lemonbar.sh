@@ -3,30 +3,27 @@
 # a statusbar for herbstluftwm based on lemonbar
 
 stalonetray &
-pids+=( $! )
+pids=( $! )
 
-hc() { herbstclient "$@"; }
-
-pids=(  )
 monitor=${1:-0}
 geometry=( $(herbstclient monitor_rect "$monitor") )
-[ -n "$geometry" ] || { echo "Invalid monitor $monitor"; exit; }
+[ -n "$geometry" ] || { echo "Invalid monitor $monitor"; exit 1; }
 x=${geometry[0]}
 y=${geometry[1]}
 width=$(( ${geometry[2]} - 36 )) # room for stalonetray
 font="-xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso10646-1"
 height=18
 update_interval=20
-tag_style="text" # text, block
+tag_style="block" # text, block
 
 # global content variables
-datetime=""
-battery=""
-temp=""
-volume=""
-muted=""
-tags=""
-linux=""
+datetime=
+battery=
+temp=
+volume=
+muted=
+tags=
+linux=
 
 # colors
 whitefg="%{F#ffffff}"
@@ -43,16 +40,36 @@ stdcol="$whitefg$blackbg"
 
 separator="$bgcolor%{F#ff0000}|$stdcol"
 
+declare -A symbols=(
+    ['vertical']='[-]'
+    ['horizontal']='[|]'
+    ['max']='[ ]'
+    ['grid']='[+]'
+)
+
 cleanup() {
     kill ${pids[@]} 2> /dev/null
-    killall stalonetray
     wait 2> /dev/null
     exit 0
 }
 trap cleanup INT TERM HUP
 
-bar_cmd() {
-	lemonbar -g $width"x"$height"+"$x"+"$y -f "$font"
+hc() { herbstclient "$@"; }
+bar_cmd() { lemonbar -g $width"x"$height"+"$x"+"$y -f "$font"; }
+
+# $1: tag, $2: window index
+get_layout() {
+    regex1="\([^(]*(0x[0-9a-f]* )*$2( 0x[0-9a-f]*)*\)"
+    echo $(hc dump "$1" | grep -Eo "$regex1" | awk '{print $2}' | sed 's/:.*//')
+}
+
+get_current_tag() {
+    IFS=$'\t' read -ra tags <<< "$(herbstclient tag_status)"
+    for i in "${tags[@]}"; do
+        if [[ $(cut -c 1 <<< "$i") == "#" ]]; then
+            echo "$(cut -c '2-' <<< "$i")"
+        fi
+    done
 }
 
 update_vars() {
@@ -161,7 +178,8 @@ event_handler() {
                 return 0
                 ;;
             focus_changed|window_title_changed)
-                windowtitle="${cmd[@]:2}"
+                l="$(get_layout "$(get_current_tag)" ${cmd[1]})"
+                windowtitle="${symbols["$l"]} ${cmd[2]}"
                 ;;
         esac
     done
@@ -172,5 +190,4 @@ event_generator &
 pids+=( $! )
 
 hc --idle | event_handler 2> /dev/null | bar_cmd
-
 cleanup

@@ -27,6 +27,7 @@ Plug 'runoshun/vim-alloy'
 
 " deoplete
 Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/neco-vim'
 Plug 'zchee/deoplete-jedi'
 Plug 'zchee/deoplete-clang'
 Plug 'eagletmt/neco-ghc'

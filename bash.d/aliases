@@ -5,6 +5,7 @@ alias osnet='cd ~/annex/eth/Semester\ 4/OSNET'
 alias dmdb='cd ~/annex/eth/Semester\ 4/DMDB'
 alias sae='cd ~/annex/eth/Semester\ 4/SAE'
 
+alias sb="cd $HOME/git/Soundbrett; ./soundbrett.rb $HOME/git/soundfiles"
 alias sp='systemctl suspend'
 alias hc='herbstclient'
 alias r='ranger'

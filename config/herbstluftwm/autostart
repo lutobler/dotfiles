@@ -175,3 +175,4 @@ for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
 done
 
 $HOME/scripts/indicator-kdeconnect.sh &
+nm-applet &

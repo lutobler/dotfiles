@@ -11,6 +11,7 @@ readonly sources=(
     "config/herbstluftwm, .config/herbstluftwm"
     "config/redshift.conf, .config/redshift.conf"
     "bash.d, bash.d"
+    ".vimrc, .vimrc"
     ".bashrc, .bashrc"
     ".bash_profile, .bash_profile"
     ".xinitrc, .xinitrc"

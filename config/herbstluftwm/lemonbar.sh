@@ -10,7 +10,7 @@ geometry=( $(herbstclient monitor_rect "$monitor") )
 [ -n "$geometry" ] || { echo "Invalid monitor $monitor"; exit 1; }
 x=${geometry[0]}
 y=${geometry[1]}
-width=$(( ${geometry[2]} - 36 )) # room for stalonetray
+width=$(( ${geometry[2]} - 54 )) # room for stalonetray
 font="-xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso10646-1"
 height=18
 update_interval=20

@@ -9,8 +9,8 @@ export PATH=$PATH:$HOME/scripts
 source $HOME/scripts/gnome_keyring_start.sh
 
 export HISTSIZE=
-export EDITOR=nvim
-export VISUAL=nvim
+export EDITOR=vim
+export VISUAL=vim
 export XKB_DEFAULT_LAYOUT=ch
 export XKB_DEFAULT_OPTIONS='caps:swapescape'
 export WLC_REPEAT_DELAY=200

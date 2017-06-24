@@ -1,11 +1,10 @@
 call plug#begin('~/.config/nvim/plugged')
-
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
-
+Plug 'tpope/vim-obsession'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'neomake/neomake'
@@ -18,12 +17,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " :FZF
 Plug 'jlanzarotta/bufexplorer' " :BufExplorer
 Plug 'vim-scripts/a.vim' " alternate (:A, :AS)
-Plug 'sjl/gundo.vim'
-Plug 'dag/vim-fish'
 Plug 'neovimhaskell/haskell-vim'
-Plug 'runoshun/vim-alloy'
-" Plug 'xolox/vim-lua-ftplugin'
-" Plug 'xolox/vim-misc'
 
 " deoplete
 Plug 'Shougo/deoplete.nvim'
@@ -52,7 +46,7 @@ function! ToggleBackground()
     else
         let g:bg_toggle = "dark"
         set background=dark
-        colorscheme base16-solarflare
+        colorscheme base16-eighties
     endif
 endfunction
 
@@ -84,19 +78,19 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
 let g:haskellmode_completion_ghc = 0
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " neomake
-let g:neomake_error_sign = {'text': 'e', 'texthl': 'NeomakeErrorSign'}
-let g:neomake_warning_sign = {'text': 'w', 'texthl': 'NeomakeWarningSign'}
-let g:neomake_message_sign = {'text': 'm', 'texthl': 'NeomakeMessageSign'}
+let g:neomake_cpp_enabled_makers = ["clang", "cppcheck"]
+let g:neomake_cpp_clang_args = ['-std=c++14', '-Wextra', '-Wall', '-g']
+" let g:neomake_lua_enabled_makers = ["luacheck"]
+let g:neomake_lua_enabled_makers = []
 
-" other
 let mapleader = ","
 let maplocalleader = ","
 let g:livepreview_previewer='zathura'
 let base16colorspace=256
 
+set mouse=a
 set number
 set modeline
 set wildmenu
@@ -119,7 +113,7 @@ set incsearch
 set colorcolumn=80
 set path+=**
 
-" colorscheme settings
+" colorscheme
 let g:bg_toggle="dark"
 set background=dark
 if (has("nvim"))
@@ -127,13 +121,13 @@ if (has("nvim"))
         set termguicolors
     endif
 endif
-colorscheme base16-solarflare
+colorscheme base16-eighties
 
 " use tab to cycle in deoplete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
 
-" common files
+" open init.vim
 nnoremap vrc :e ~/.config/nvim/init.vim<CR>
 
 " terminal keybindings for neovim
@@ -143,7 +137,6 @@ tnoremap <C-w>k <C-\><C-n><C-w>k
 tnoremap <C-w>l <C-\><C-n><C-w>l
 tnoremap jk <C-\><C-n>
 
-" other
 nnoremap <F5> :call ToggleBackground()<CR>
 nnoremap <F3> :NERDTreeToggle<CR>
 nnoremap gn :tabnew<CR>
@@ -156,7 +149,7 @@ inoremap jk <Esc>
 
 " language settings
 autocmd FileType haskell set sw=2 ts=2 expandtab
-" autocmd FileType lua set noexpandtab sw=4 tw=4
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " keybindings for specific languages
 autocmd FileType c nnoremap <leader>p oprintf("\n");<Esc>4hi
@@ -170,9 +163,16 @@ autocmd FileType octave setlocal commentstring=%\ %s
 autocmd FileType vim setlocal commentstring=\"\ %s
 autocmd FileType xdefaults setlocal commentstring=!\ %s
 autocmd FileType cmake setlocal commentstring=#\ %s
+autocmd FileType c setlocal commentstring=//\ %s
+autocmd FileType cpp setlocal commentstring=//\ %s
 
-" other
-autocmd! BufWritePost * Neomake
+" neomake file maker on write for these filetypes
+autocmd! BufWritePost *.lua Neomake
+
+" neomake project maker on write for everything else
+autocmd! BufWritePost * Neomake!
+
+autocmd FileType markdown IndentLinesDisable
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert

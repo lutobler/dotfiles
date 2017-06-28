@@ -193,7 +193,7 @@ endfunction
 nnoremap <F5> :call ToggleColorscheme()<CR>
 
 "colorschemes
-if ($TERM != 'linux' && has("termguicolors"))
+if ($TERM != 'linux' && $TERM != 'xterm' && has("termguicolors"))
     set termguicolors
     set background=light
     call ToggleColorscheme()

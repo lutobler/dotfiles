@@ -13,7 +13,7 @@ hc keyunbind --all
 Mod=Mod4 # super key
 
 # next wallpaper
-hc keybind $Mod-w spawn feh --bg-scale -z $HOME/annex/wallpaper/rotation
+hc keybind $Mod-w spawn feh --bg-scale -z $HOME/sync/wallpaper/rotation
 hc keybind $Mod-udiaeresis spawn killall -s SIGUSR1 redshift
 
 hc keybind $Mod-Shift-e quit
@@ -99,7 +99,7 @@ hc keybind $Mod-m spawn qutebrowser --backend webengine
 hc keybind $Mod-n spawn telegram-desktop
 hc keybind $Mod-u spawn rofi -show run
 hc keybind $Mod-i spawn rofi-pass
-hc keybind $Mod-minus spawn $HOME/scripts/rofi_pdf.sh "$HOME/annex/eth/Semester 4"
+hc keybind $Mod-minus spawn $HOME/scripts/rofi_pdf.sh "$HOME/sync/eth/Semester 4"
 hc keybind $Mod-apostrophe spawn $HOME/scripts/rofi_soundbrett.sh
 hc keybind $Mod-a spawn $HOME/scripts/screenshot.sh sel
 hc keybind $Mod-Shift-a spawn $HOME/scripts/screenshot.sh selxsel

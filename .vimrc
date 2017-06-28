@@ -44,6 +44,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'chriskempson/base16-vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'maralla/completor.vim'
+Plug 'eagletmt/neco-ghc'
 call plug#end()
 
 "completor
@@ -54,6 +55,10 @@ let g:completor_css_omni_trigger = '([\w-]+|@[\w-]*|[\w-]+:\s*[\w-]*)$'
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+
+"haskell
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 "leader keymappings
 let mapleader = ","
@@ -68,6 +73,7 @@ nnoremap <F3> :NERDTreeToggle<CR>
 nnoremap <C-h> gT
 nnoremap <C-l> gt
 nnoremap gn :tabnew<CR>
+nnoremap <F2> gg"+yG''
 
 "commentstrings for vim-commentary
 autocmd FileType matlab setlocal commentstring=%\ %s
@@ -84,7 +90,6 @@ autocmd FileType c noremap <leader>d o__asm__("int $3");<Esc>
 autocmd FileType cpp nnoremap <leader>p ostd::cout <<   << std::endl;<Esc>14hi
 autocmd FileType python nnoremap <leader>d oimport pdb; pdb.set_trace()<esc>
 
-autocmd! BufWritePost * Neomake!
 autocmd FileType markdown IndentLinesDisable
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd FileType org set shiftwidth=4 tabstop=4
@@ -92,8 +97,10 @@ autocmd FileType org set shiftwidth=4 tabstop=4
 "neomake
 let g:neomake_cpp_enabled_makers = ["clang", "cppcheck"]
 let g:neomake_cpp_clang_args = ['-std=c++14', '-Wextra', '-Wall', '-g']
-" let g:neomake_lua_enabled_makers = ["luacheck"]
-let g:neomake_lua_enabled_makers = []
+let g:neomake_lua_enabled_makers = ["luacheck"]
+" let g:neomake_lua_enabled_makers = []
+autocmd! BufWritePost * Neomake!
+autocmd! BufWritePost *.lua Neomake
 
 "lightline
 if ($TERM != 'linux')
@@ -117,12 +124,6 @@ if ($TERM != 'linux')
         \ 'subseparator': { 'left': '', 'right': '' }
         \ }
 end
-
-"colorschemes
-if ($TERM != 'linux' && has("termguicolors"))
-    set termguicolors
-end
-let base16colorspace=256
 
 if !exists('s:known_links')
   let s:known_links = {}
@@ -191,5 +192,10 @@ function! ToggleColorscheme()
 endfunction
 nnoremap <F5> :call ToggleColorscheme()<CR>
 
-set background=light
-call ToggleColorscheme()
+"colorschemes
+if ($TERM != 'linux' && has("termguicolors"))
+    set termguicolors
+    set background=light
+    call ToggleColorscheme()
+    let base16colorspace=256
+end

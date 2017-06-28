@@ -12,6 +12,10 @@ temp() {
     echo $(acpi -t | cut -d' ' -f4)°
 }
 
+sync_status() {
+    watch grep -e Dirty: -e Writeback: /proc/meminfo
+}
+
 pkg_orphans() {
     if [[ ! -n $(pacman -Qdt) ]]; then
         echo "No orphans to remove."

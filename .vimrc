@@ -103,7 +103,7 @@ autocmd! BufWritePost * Neomake!
 autocmd! BufWritePost *.lua Neomake
 
 "lightline
-if ($TERM != 'linux')
+if ($TERM != 'linux' && $TERM != 'xterm')
     let g:lightline = {
         \ 'colorscheme': 'wombat',
         \ 'active': {

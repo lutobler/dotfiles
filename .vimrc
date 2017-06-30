@@ -58,6 +58,7 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
 
 "haskell
 let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell set sw=2 ts=2 expandtab
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 "leader keymappings

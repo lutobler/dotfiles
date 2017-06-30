@@ -62,8 +62,8 @@ for i in ${!tag_names[@]} ; do
     fi
 done
 
-hc keybind $Mod-dollar spawn $HOME/scripts/tagctl.sh add
-hc keybind $Mod-adiaeresis spawn $HOME/scripts/tagctl.sh remove
+hc keybind $Mod-dollar spawn $HOME/scripts/tagctl.lua -a
+hc keybind $Mod-adiaeresis spawn $HOME/scripts/tagctl.lua -r
 
 # cycle through tags
 hc keybind $Mod-period use_index +1 --skip-visible

@@ -12,3 +12,4 @@ xset +fp $HOME/.fonts
 setxkbmap ch
 
 exec herbstluftwm
+# exec herbstluftwm -c /etc/xdg/herbstluftwm/autostart

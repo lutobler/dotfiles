@@ -1,10 +1,11 @@
 #!/bin/sh
 
-alias fmfp='cd ~/annex/eth/Semester\ 4/FMFP'
-alias osnet='cd ~/annex/eth/Semester\ 4/OSNET'
-alias dmdb='cd ~/annex/eth/Semester\ 4/DMDB'
-alias sae='cd ~/annex/eth/Semester\ 4/SAE'
+alias fmfp='cd ~/sync/eth/Semester\ 4/FMFP'
+alias osnet='cd ~/sync/eth/Semester\ 4/OSNET'
+alias dmdb='cd ~/sync/eth/Semester\ 4/DMDB'
+alias sae='cd ~/sync/eth/Semester\ 4/SAE'
 
+alias snake=' mpv https://www.youtube.com/playlist?list=PLSb7Oi_91qhvgJwjzId2d_Oux3TeZTPsn --no-video --shuffle'
 alias sb="cd $HOME/git/Soundbrett; ./soundbrett.rb $HOME/git/soundfiles"
 alias sp='systemctl suspend'
 alias hc='herbstclient'
@@ -26,4 +27,4 @@ alias rpifs='sshfs alarm@luke.root.sx:/home/alarm ~/mnt/rpi -o transform_symlink
 alias desktop='TERM=xterm ssh luke@arch.home'
 alias desktopfs='sshfs luke@arch.home:/home/luke ~/mnt/desktop -o transform_symlinks -o follow_symlinks'
 alias 5xfs="jmtpfs ~/mnt/5x"
-alias fieri="feh --bg-scale $HOME/annex/wallpaper/1491756375892.gif"
+alias fieri="feh --bg-scale $HOME/sync/wallpaper/1491756375892.gif"

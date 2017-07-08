@@ -4,7 +4,8 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-export PATH=$PATH:$HOME/scripts
+PATH=$PATH:$HOME/scripts
+export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 source $HOME/scripts/gnome_keyring_start.sh
 

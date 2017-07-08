@@ -60,7 +60,7 @@ let mapleader = ","
 let maplocalleader = ","
 noremap  <leader>n :noh<CR>
 nnoremap <leader>b :BufExplorer<CR>
-nnoremap <leader>fz :FZF<CR>
+nnoremap <leader>f :FZF<CR>
 
 "key mappings
 nnoremap vrc :e ~/.vimrc<CR>
@@ -94,16 +94,16 @@ let g:neomake_cpp_enabled_makers = ["clang", "cppcheck"]
 let g:neomake_cpp_clang_args = ['-std=c++14', '-Wextra', '-Wall', '-g']
 let g:neomake_lua_enabled_makers = ["luacheck"]
 " let g:neomake_lua_enabled_makers = []
-let g:neomake_buildpath_maker = {
+let g:neomake_buildpathmaker_maker = {
 \ 'exe': 'make',
 \ 'args': ['-j4'],
 \ 'cwd': 'build'
 \ }
 autocmd! BufWritePost * Neomake!
-autocmd! BufWritePost *.cc Neomake! buildpath
-autocmd! BufWritePost *.cpp Neomake! buildpath
-autocmd! BufWritePost *.h Neomake! buildpath
-autocmd! BufWritePost *.hh Neomake! buildpath
+autocmd! BufWritePost *.cc Neomake! buildpathmaker
+autocmd! BufWritePost *.cpp Neomake! buildpathmaker
+autocmd! BufWritePost *.h Neomake! buildpathmaker
+autocmd! BufWritePost *.hh Neomake! buildpathmaker
 autocmd! BufWritePost *.lua Neomake
 
 "lightline

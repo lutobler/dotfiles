@@ -19,6 +19,7 @@ set smartcase
 set hlsearch
 set incsearch
 set colorcolumn=80
+set clipboard=unnamedplus
 syntax on
 
 "vim-plug
@@ -43,18 +44,11 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'chriskempson/base16-vim'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'maralla/completor.vim'
 Plug 'eagletmt/neco-ghc'
 call plug#end()
 
-"completor
-let g:completor_node_binary = '/usr/bin/node'
-let g:completor_clang_binary = '/usr/bin/clang'
-let g:completor_python_binary = '/usr/bin/python'
-let g:completor_css_omni_trigger = '([\w-]+|@[\w-]*|[\w-]+:\s*[\w-]*)$'
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+"YouCompleteMe
+let g:ycm_server_python_interpreter = '/usr/bin/python2'
 
 "haskell
 let g:haskellmode_completion_ghc = 0
@@ -88,7 +82,7 @@ autocmd FileType cpp setlocal commentstring=//\ %s
 " keybindings for specific languages
 autocmd FileType c nnoremap <leader>p oprintf("\n");<Esc>4hi
 autocmd FileType c noremap <leader>d o__asm__("int $3");<Esc>
-autocmd FileType cpp nnoremap <leader>p ostd::cout <<   << std::endl;<Esc>14hi
+autocmd FileType cpp nnoremap <leader>p ostd::cout <<  << std::endl;<Esc>14hi
 autocmd FileType python nnoremap <leader>d oimport pdb; pdb.set_trace()<esc>
 
 autocmd FileType markdown IndentLinesDisable
@@ -100,7 +94,16 @@ let g:neomake_cpp_enabled_makers = ["clang", "cppcheck"]
 let g:neomake_cpp_clang_args = ['-std=c++14', '-Wextra', '-Wall', '-g']
 let g:neomake_lua_enabled_makers = ["luacheck"]
 " let g:neomake_lua_enabled_makers = []
+let g:neomake_buildpath_maker = {
+\ 'exe': 'make',
+\ 'args': ['-j4'],
+\ 'cwd': 'build'
+\ }
 autocmd! BufWritePost * Neomake!
+autocmd! BufWritePost *.cc Neomake! buildpath
+autocmd! BufWritePost *.cpp Neomake! buildpath
+autocmd! BufWritePost *.h Neomake! buildpath
+autocmd! BufWritePost *.hh Neomake! buildpath
 autocmd! BufWritePost *.lua Neomake
 
 "lightline

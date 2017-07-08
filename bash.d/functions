@@ -39,3 +39,12 @@ pf() {
 mp3_dl() {
     youtube-dl -x --audio-format mp3 --audio-quality 0 "$1"
 }
+
+fortune() {
+    curl -m 2 -Ls http://uncyclopedia.wikia.com/wiki/Special:Random/ | \
+        sed -n '/<p>/,/<\/p>/p' | \
+        sed -e 's/<[^>]*>//g' -e '/^*$/d' -e '/article/g' | \
+        perl -MList::Util=shuffle -e 'print shuffle(<STDIN>);' | \
+        sed -n '/^.\{35\}/p' | \
+        head -n1
+}

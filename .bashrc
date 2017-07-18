@@ -3,7 +3,8 @@
 
 trysource() { [[ -f "$1" ]] && source "$1"; }
 
-trysource ~/.fzf.bash
+trysource ~/bash.d/init-prompt
 trysource ~/bash.d/functions
 trysource ~/bash.d/aliases
+trysource ~/.fzf.bash
 [[ "$TERM" == rxvt-unicode-256color ]] && trysource ~/bash.d/ps1-powerline

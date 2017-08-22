@@ -4,12 +4,10 @@
 
 urxvtd -q -f -o &
 redshift &
-dunst &
-~/scripts/wallpaper.sh &
+nm-applet &
 unclutter -idle 3 &
 
 xset +fp $HOME/.fonts
 setxkbmap ch
 
-exec herbstluftwm
-# exec herbstluftwm -c /etc/xdg/herbstluftwm/autostart
+exec awesome

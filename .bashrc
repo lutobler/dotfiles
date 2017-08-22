@@ -3,7 +3,7 @@
 
 trysource() { [[ -f "$1" ]] && source "$1"; }
 
-trysource ~/bash.d/init-prompt
+# trysource ~/bash.d/init-prompt
 trysource ~/bash.d/functions
 trysource ~/bash.d/aliases
 trysource ~/.fzf.bash

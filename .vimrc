@@ -92,8 +92,8 @@ autocmd FileType org set shiftwidth=4 tabstop=4
 "neomake
 let g:neomake_cpp_enabled_makers = ["clang", "cppcheck"]
 let g:neomake_cpp_clang_args = ['-std=c++14', '-Wextra', '-Wall', '-g']
-let g:neomake_lua_enabled_makers = ["luacheck"]
-" let g:neomake_lua_enabled_makers = []
+" let g:neomake_lua_enabled_makers = ["luacheck"]
+let g:neomake_lua_enabled_makers = []
 let g:neomake_buildpathmaker_maker = {
 \ 'exe': 'make',
 \ 'args': ['-j4'],

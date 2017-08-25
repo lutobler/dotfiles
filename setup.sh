@@ -6,3 +6,4 @@ stow bash
 stow dunst
 stow redshift
 stow herbstluftwm
+stow awesome

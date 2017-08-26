@@ -1,5 +1,6 @@
 #!/bin/sh
 
+[[ -f "$HOME/xresources/.Xresources" ]] && xrdb -merge "$HOME/xresources/.Xresources"
 [[ -f "$HOME/.Xresources" ]] && xrdb -merge "$HOME/.Xresources"
 
 urxvtd -q -f -o &

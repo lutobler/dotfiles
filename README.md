@@ -1,7 +1,7 @@
 ### Description
 
 Dotfiles for my Arch system, managed with GNU Stow.
-Currently using AwesomeWM with a theme derived from [powerarrow](https://github.com/copycat-killer/awesome-copycats)
+Currently using AwesomeWM with a theme derived from [powerarrow](https://github.com/copycat-killer/awesome-copycats).
 
 ### Screeshots
 

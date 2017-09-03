@@ -341,6 +341,15 @@ globalkeys = awful.util.table.join(
         function () awful.spawn("rofi-pass") end,
         { description = "open rofi pass menu", group = "launcher" }
     ),
+    awful.key({ modkey }, "a", -- screenshot selector
+        function () awful.spawn("screenshot.sh selxsel") end,
+        { description = "take a screenshot by selecting an area",
+          group = "launcher" }
+    ),
+    awful.key({ modkey, "Shift" }, "a", -- screenshot
+        function () awful.spawn("screenshot.sh") end,
+        { description = "take a screenshot", group = "launcher" }
+    ),
 
     awful.key({ modkey, "Control" }, "r",
         awesome.restart,

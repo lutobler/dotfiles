@@ -45,6 +45,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'chriskempson/base16-vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'eagletmt/neco-ghc'
+Plug 'lervag/vimtex'
 call plug#end()
 
 "YouCompleteMe

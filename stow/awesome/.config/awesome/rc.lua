@@ -17,6 +17,8 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- when client with a matching name is opened
 require("awful.hotkeys_popup.keys")
 
+require("repetitive")
+
 -- Error handling
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,

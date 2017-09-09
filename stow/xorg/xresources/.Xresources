@@ -1,5 +1,5 @@
+! #include "/home/luke/git/base16-xresources/xresources/base16-eighties-256.Xresources"
 #include "/home/luke/git/base16-xresources/xresources/base16-solarflare-256.Xresources"
-! #include "/home/luke/git/base16-xresources/xresources/base16-solarflare-256.Xresources"
 ! #include "/home/luke/git/base16-xresources/xresources/base16-green-screen-256.Xresources"
 
 URxvt.scrollBar: false

@@ -10,8 +10,8 @@ export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 source $HOME/scripts/gnome_keyring_start.sh
 
 export HISTSIZE=
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=vis
+export VISUAL=vis
 export XKB_DEFAULT_LAYOUT=ch
 export XKB_DEFAULT_OPTIONS='caps:swapescape'
 export WLC_REPEAT_DELAY=200

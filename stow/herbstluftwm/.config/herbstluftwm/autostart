@@ -2,6 +2,9 @@
 
 # herbstluftwm config
 
+# wallpaper
+feh --bg-scale -z $HOME/sync/wallpaper/rotation &
+
 hc() { herbstclient "$@"; }
 
 hc emit_hook reload
@@ -175,5 +178,5 @@ for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     "$panel" $monitor &
 done
 
-$HOME/scripts/indicator-kdeconnect.sh &
-nm-applet &
+# $HOME/scripts/indicator-kdeconnect.sh &
+# nm-applet &

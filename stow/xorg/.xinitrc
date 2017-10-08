@@ -8,8 +8,10 @@ redshift &
 nm-applet &
 unclutter -idle 3 &
 $HOME/scripts/dowloads_watcher.sh &
+$HOME/scripts/wallpaper.sh &
 
 xset +fp $HOME/.fonts
 setxkbmap ch
 
-exec awesome
+exec herbstluftwm
+# exec awesome

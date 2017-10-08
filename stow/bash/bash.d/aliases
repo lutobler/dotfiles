@@ -30,3 +30,4 @@ alias desktop='TERM=xterm ssh luke@arch.home'
 alias desktopfs='sshfs luke@arch.home:/home/luke ~/mnt/desktop -o transform_symlinks -o follow_symlinks'
 alias 5xfs="jmtpfs ~/mnt/5x"
 alias fieri="feh --bg-scale $HOME/sync/wallpaper/1491756375892.gif"
+alias firefox='firefox-beta'

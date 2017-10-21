@@ -103,7 +103,7 @@ hc keybind $Mod-e spawn evolution
 hc keybind $Mod-n spawn telegram-desktop
 hc keybind $Mod-u spawn rofi -show run
 hc keybind $Mod-i spawn rofi-pass
-hc keybind $Mod-minus spawn $HOME/scripts/rofi_pdf.sh "$HOME/sync/eth/Semester 4"
+hc keybind $Mod-minus spawn $HOME/scripts/rofi_pdf.sh "$HOME/sync/eth/"
 hc keybind $Mod-apostrophe spawn $HOME/scripts/rofi_soundbrett.sh
 hc keybind $Mod-a spawn $HOME/scripts/screenshot.sh sel
 hc keybind $Mod-Shift-a spawn $HOME/scripts/screenshot.sh selxsel

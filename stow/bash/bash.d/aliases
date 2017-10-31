@@ -32,3 +32,4 @@ alias 5xfs="jmtpfs ~/mnt/5x"
 alias fieri="feh --bg-scale $HOME/sync/wallpaper/1491756375892.gif"
 alias firefox='firefox-beta'
 alias gti=git
+alias mutt=neomutt

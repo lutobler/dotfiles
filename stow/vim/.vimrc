@@ -24,12 +24,14 @@ syntax on
 
 "vim-plug
 call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-rails'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-obsession'
+Plug 'Valloric/YouCompleteMe'
 Plug 'itchyny/lightline.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'jceb/vim-orgmode'
@@ -49,7 +51,7 @@ Plug 'lervag/vimtex'
 call plug#end()
 
 "YouCompleteMe
-let g:ycm_server_python_interpreter = '/usr/bin/python2'
+let g:ycm_server_python_interpreter = '/usr/bin/python3'
 
 "haskell
 let g:haskellmode_completion_ghc = 0
@@ -106,6 +108,7 @@ autocmd! BufWritePost *.cpp Neomake! buildpathmaker
 autocmd! BufWritePost *.h Neomake! buildpathmaker
 autocmd! BufWritePost *.hh Neomake! buildpathmaker
 autocmd! BufWritePost *.lua Neomake
+au BufRead /tmp/neomutt-* set tw=72
 
 "lightline
 if ($TERM != 'linux' && $TERM != 'xterm')

@@ -7,6 +7,7 @@ urxvtd -q -f -o &
 redshift &
 nm-applet &
 unclutter -idle 3 &
+dunst &
 $HOME/scripts/dowloads_watcher.sh &
 $HOME/scripts/wallpaper.sh &
 

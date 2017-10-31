@@ -7,6 +7,7 @@
 PATH=$PATH:$HOME/scripts
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 export PATH=$PATH:/opt/MATLAB/R2017b/bin
+export PATH=$PATH:/opt/jython/bin
 
 source $HOME/scripts/gnome_keyring_start.sh
 

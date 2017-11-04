@@ -72,6 +72,7 @@ nnoremap <C-h> gT
 nnoremap <C-l> gt
 nnoremap gn :tabnew<CR>
 nnoremap <F2> gg"+yG''
+nnoremap <F4> :!$PWD/build.sh<CR>
 
 "commentstrings for vim-commentary
 autocmd FileType matlab setlocal commentstring=%\ %s

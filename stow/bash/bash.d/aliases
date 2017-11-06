@@ -1,9 +1,8 @@
-#!/bin/sh
-
-alias fmfp='cd ~/sync/eth/Semester\ 4/FMFP'
-alias osnet='cd ~/sync/eth/Semester\ 4/OSNET'
-alias dmdb='cd ~/sync/eth/Semester\ 4/DMDB'
-alias sae='cd ~/sync/eth/Semester\ 4/SAE'
+alias s1='cd ~/sync/eth/Semester\ 1'
+alias s2='cd ~/sync/eth/Semester\ 2'
+alias s3='cd ~/sync/eth/Semester\ 3'
+alias s4='cd ~/sync/eth/Semester\ 4'
+alias s5='cd ~/sync/eth/Semester_5'
 
 alias snake=' mpv https://www.youtube.com/playlist?list=PLSb7Oi_91qhvgJwjzId2d_Oux3TeZTPsn --no-video --shuffle'
 alias sb="cd $HOME/git/Soundbrett; ./soundbrett.rb $HOME/git/soundfiles"

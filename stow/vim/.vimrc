@@ -2,9 +2,9 @@
 " vimrc / init.vim
 " This is supposed to be compatible with both Vim / Neovim
 " Author: lutobler, https://github.com/lutobler
+" License: MIT (see https://github.com/lutobler/dotfiles
 "
 
-"settings
 set mouse=a
 set number
 set modeline
@@ -45,6 +45,9 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+Plug 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-clang'
+Plug 'Shougo/neco-vim'
 
 Plug 'itchyny/lightline.vim'
 Plug 'Yggdroot/indentLine'
@@ -64,8 +67,13 @@ Plug 'eagletmt/neco-ghc'
 Plug 'lervag/vimtex'
 call plug#end()
 
-"YouCompleteMe
-let g:ycm_server_python_interpreter = '/usr/bin/python3'
+"deoplete
+let g:deoplete#enable_at_startup=1
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
+let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
+let g:haskellmode_completion_ghc = 0
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
 
 "haskell
 let g:haskellmode_completion_ghc = 0
@@ -85,6 +93,8 @@ nnoremap <F3> :NERDTreeToggle<CR>
 nnoremap <C-h> gT
 nnoremap <C-l> gt
 nnoremap gn :tabnew<CR>
+nnoremap gl :tabmove -<CR>
+nnoremap gr :tabmove +<CR>
 nnoremap <F2> gg"+yG''
 nnoremap <F4> :!$PWD/build.sh<CR>
 
@@ -97,12 +107,10 @@ autocmd FileType cmake setlocal commentstring=#\ %s
 autocmd FileType c setlocal commentstring=//\ %s
 autocmd FileType cpp setlocal commentstring=//\ %s
 
-" keybindings for specific languages
 autocmd FileType c nnoremap <leader>p oprintf("\n");<Esc>4hi
 autocmd FileType c noremap <leader>d o__asm__("int $3");<Esc>
 autocmd FileType cpp nnoremap <leader>p ostd::cout <<  << std::endl;<Esc>14hi
 autocmd FileType python nnoremap <leader>d oimport pdb; pdb.set_trace()<esc>
-
 autocmd FileType markdown IndentLinesDisable
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd FileType org set shiftwidth=4 tabstop=4

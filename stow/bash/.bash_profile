@@ -12,8 +12,8 @@ export PATH=$PATH:/opt/jython/bin
 source $HOME/scripts/gnome_keyring_start.sh
 
 export HISTSIZE=
-export EDITOR=vis
-export VISUAL=vis
+export EDITOR=nvim
+export VISUAL=nvim
 export XKB_DEFAULT_LAYOUT=ch
 export XKB_DEFAULT_OPTIONS='caps:swapescape'
 export WLC_REPEAT_DELAY=200

@@ -11,6 +11,7 @@ alias hc='herbstclient'
 alias r='ranger'
 alias t='temp'
 alias v='vim'
+alias vim=nvim
 alias m='make -j4'
 # alias ls='ls -h --group-directories-first --color=auto'
 # alias la='\ls -lah --group-directories-first --color=auto'

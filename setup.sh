@@ -10,3 +10,4 @@ $stow_cmd dunst
 $stow_cmd redshift
 $stow_cmd herbstluftwm
 $stow_cmd awesome
+$stow_cmd nvim

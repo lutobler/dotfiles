@@ -1,3 +1,9 @@
+"
+" vimrc / init.vim
+" This is supposed to be compatible with both Vim / Neovim
+" Author: lutobler, https://github.com/lutobler
+"
+
 "settings
 set mouse=a
 set number
@@ -31,7 +37,15 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-obsession'
-Plug 'Valloric/YouCompleteMe'
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
 Plug 'itchyny/lightline.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'jceb/vim-orgmode'

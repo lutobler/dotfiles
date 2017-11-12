@@ -5,18 +5,15 @@ alias s4='cd ~/sync/eth/Semester\ 4'
 alias s5='cd ~/sync/eth/Semester_5'
 
 alias snake=' mpv https://www.youtube.com/playlist?list=PLSb7Oi_91qhvgJwjzId2d_Oux3TeZTPsn --no-video --shuffle'
-alias sb="cd $HOME/git/Soundbrett; ./soundbrett.rb $HOME/git/soundfiles"
 alias s='systemctl suspend'
 alias hc='herbstclient'
 alias r='ranger'
-alias t='temp'
 alias v='vim'
 alias vim=nvim
 alias m='make -j4'
-# alias ls='ls -h --group-directories-first --color=auto'
-# alias la='\ls -lah --group-directories-first --color=auto'
-alias ls='exa -bghl --group-directories-first --sort name'
-alias c='cmake . && make clean && make -j4'
+alias ls='ls -h --group-directories-first --color=auto'
+alias la='\ls -lah --group-directories-first --color=auto'
+[ -f /usr/bin/exa ] && alias ls='exa -bghl --group-directories-first --sort name'
 alias tmux="env TERM=xterm-256color tmux"
 alias dbg='coredumpctl gdb'
 alias torrents='TERM=xterm ssh alarm@luke.root.sx -t tmux a'
@@ -29,7 +26,6 @@ alias rpifs='sshfs alarm@luke.root.sx:/home/alarm ~/mnt/rpi -o transform_symlink
 alias desktop='TERM=xterm ssh luke@arch.home'
 alias desktopfs='sshfs luke@arch.home:/home/luke ~/mnt/desktop -o transform_symlinks -o follow_symlinks'
 alias 5xfs="jmtpfs ~/mnt/5x"
-alias fieri="feh --bg-scale $HOME/sync/wallpaper/1491756375892.gif"
 alias firefox='firefox-beta'
 alias gti=git
 alias mutt=neomutt

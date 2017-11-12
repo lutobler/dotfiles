@@ -1,7 +1,7 @@
 #!/bin/sh
 
-[[ -f "$HOME/xresources/.Xresources" ]] && xrdb -merge "$HOME/xresources/.Xresources"
-[[ -f "$HOME/.Xresources" ]] && xrdb -merge "$HOME/.Xresources"
+[ -f "$HOME/xresources/.Xresources" ] && xrdb -merge "$HOME/xresources/.Xresources"
+[ -f "$HOME/.Xresources" ] && xrdb -merge "$HOME/.Xresources"
 
 urxvtd -q -f -o &
 redshift &
@@ -12,7 +12,6 @@ $HOME/scripts/dowloads_watcher.sh &
 $HOME/scripts/wallpaper.sh &
 
 xset +fp $HOME/.fonts
-setxkbmap ch
+setxkbmap ch -option caps:swapescape
 
 exec herbstluftwm
-# exec awesome

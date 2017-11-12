@@ -99,7 +99,7 @@ hc keybind $Mod-Shift-Tab cycle -1
 hc keybind $Mod-z jumpto urgent
 
 hc keybind $Mod-m spawn qutebrowser --backend webengine --debug
-hc keybind $Mod-e spawn evolution
+hc keybind $Mod-e spawn urxvtc -e neomutt
 hc keybind $Mod-n spawn telegram-desktop
 hc keybind $Mod-u spawn rofi -show run
 hc keybind $Mod-i spawn rofi-pass

@@ -1,0 +1,176 @@
+[colors]
+;background = ${xrdb:color0:#222}
+background = #222
+background-alt = #444
+;foreground = ${xrdb:color7:#222}
+foreground = #dfdfdf
+foreground-alt = #8a8a8c
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+[bar/hlwm-top]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 18
+;offset-x = 1%
+;offset-y = 1%
+radius = 0
+fixed-center = false
+
+enable-ipc = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = Inconsolata for Powerline:weight=bold:size=10;1
+; font-0 = "Roboto Mono:size=10:weight=normal;2"
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
+
+modules-left = hlws
+modules-center =
+modules-right = filesystem memory wlan temperature battery date
+
+tray-position = right
+tray-padding = 2
+
+[module/filesystem]
+type = internal/fs
+interval = 60
+
+mount-0 = /
+
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}  %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/hlws]
+type = custom/ipc
+; hook-0 = python3 ~/.config/herbstluftwm/hlws.py
+hook-0 = ~/.config/herbstluftwm/hl_workspaces.sh
+initial = 1
+scroll-down = exec herbstclient use_index +1
+scroll-up = exec herbstclient use_index -1
+; format-foreground = ${colors.foreground}
+; format-background = ${colors.modb2}
+; format-padding = 2
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "CPU: "
+format-prefix-foreground = ${colors.foreground-alt}
+; format-underline = #f90000
+label = %percentage%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "MEM: "
+format-prefix-foreground = ${colors.foreground-alt}
+; format-underline = #4bffdc
+label = %percentage_used%%
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected = %{F#8a8a8c}WLAN: %{F-} <label-connected>
+; format-connected-underline = #9f78e1
+label-connected = %essid%
+
+; format-disconnected =
+format-disconnected = %{F#8a8a8c}WLAN: %{F-} <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %Y-%m-%d"
+
+time = %H:%M %Y-%m-%d
+time-alt = %H:%M:%S
+
+format-prefix =
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #0a6cf5
+
+label = %date% %time%
+
+[module/volume]
+type = internal/volume
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = "MUTED "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = sound muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = custom/script
+exec = ~/scripts/battery.sh
+interval = 10
+format-prefix = "BAT: "
+format-prefix-foreground = ${colors.foreground-alt}
+; format-foreground = ${colors.foreground}
+; format-background = ${colors.modb2}
+; format-padding = 2
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+interval = 5.0
+
+format = %{F#8a8a8c}TEMP: %{F-} <label>
+format-warn = %{F#8a8a8c}TEMP: %{F-} <label-warn>
+
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = ${colors.secondary}
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+; vim:ft=dosini

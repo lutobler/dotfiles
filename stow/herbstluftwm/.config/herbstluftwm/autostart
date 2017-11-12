@@ -172,8 +172,8 @@ herbstclient set tree_style '╾│ ├└╼─┐'
 hc detect_monitors
 
 # panel
-panel=$HOME/.config/herbstluftwm/lemonbar.sh
-[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
+panel=$HOME/.config/herbstluftwm/polybar.sh
+[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/polybar.sh
 for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     "$panel" $monitor &
 done

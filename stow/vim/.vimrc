@@ -75,6 +75,12 @@ let g:haskellmode_completion_ghc = 0
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
 
+" vimtex for deoplete
+if !exists('g:deoplete#omni#input_patterns')
+    let g:deoplete#omni#input_patterns = {}
+endif
+let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+
 "haskell
 let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell set sw=2 ts=2 expandtab

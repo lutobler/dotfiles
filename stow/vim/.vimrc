@@ -80,6 +80,7 @@ if !exists('g:deoplete#omni#input_patterns')
     let g:deoplete#omni#input_patterns = {}
 endif
 let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+let g:deoplete#omni#input_patterns.plaintex = g:vimtex#re#deoplete
 
 "haskell
 let g:haskellmode_completion_ghc = 0
@@ -137,7 +138,11 @@ autocmd! BufWritePost *.cpp Neomake! buildpathmaker
 autocmd! BufWritePost *.h Neomake! buildpathmaker
 autocmd! BufWritePost *.hh Neomake! buildpathmaker
 autocmd! BufWritePost *.lua Neomake
-au BufRead /tmp/neomutt-* set tw=72
+" au BufRead /tmp/neomutt-* set tw=72
+
+" spell checking
+autocmd FileType gitcommit setlocal spell
+autocmd BufRead /tmp/neomutt-* setlocal spell
 
 "lightline
 if ($TERM != 'linux' && $TERM != 'xterm')

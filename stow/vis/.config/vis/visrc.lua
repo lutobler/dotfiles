@@ -6,10 +6,13 @@ require 'plugins/complete-word'
 -- plugins
 local plug = require 'vis-plug'
 plug:load_plugins({
-    'lutobler/vis-commentary',
-    'lutobler/vis-modelines',
-    'lutobler/vis-surround'
+    { github = 'lutobler/vis-commentary', require_ = 'vis-commentary' },
+    { github = 'lutobler/vis-modelines', require_ = 'vis-modelines' },
+    { github = 'lutobler/vis-surround', require_ = 'vis-surround' },
+    { github = 'guillaumecherel/vis-fzf-open' }
 })
+
+local vis_fzf_open = require 'plugins/vis-fzf-open/fzf-open'
 
 local cschemes = { "base16-eighties", "papercolor" }
 local i, n = 1, #cschemes

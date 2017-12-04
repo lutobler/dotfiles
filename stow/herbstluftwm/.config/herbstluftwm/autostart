@@ -21,7 +21,7 @@ hc keybind $Mod-udiaeresis spawn killall -s SIGUSR1 redshift
 
 hc keybind $Mod-Shift-e quit
 hc keybind $Mod-Shift-r reload
-#hc keybind $Mod-q close
+hc keybind $Mod-q close
 hc keybind $Mod-Return spawn urxvtc
 
 # basic movement

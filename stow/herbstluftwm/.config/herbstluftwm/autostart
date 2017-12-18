@@ -23,6 +23,7 @@ hc keybind $Mod-Shift-e quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-q close
 hc keybind $Mod-Return spawn urxvtc
+# hc keybind $Mod-Return spawn termite
 
 # basic movement
 # focusing clients

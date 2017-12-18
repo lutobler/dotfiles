@@ -15,3 +15,4 @@ xset +fp $HOME/.fonts
 setxkbmap ch -option caps:swapescape
 
 exec herbstluftwm
+#exec awesome

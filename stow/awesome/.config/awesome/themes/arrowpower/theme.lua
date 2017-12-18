@@ -128,25 +128,6 @@ theme.titlebar_maximized_button_normal_inactive = tdir .. "maximized_normal_inac
 local markup = lain.util.markup
 local separators = lain.util.separators
 
--- -- Binary clock
--- local binclock = require("themes.powerarrow.binclock") {
---     height = 16,
---     show_seconds = true,
---     color_active = theme.fg_normal,
---     color_inactive = black2
--- }
-
--- -- Calendar
--- theme.cal = lain.widget.calendar({
---     --cal = "cal --color=always",
---     attach_to = { binclock.widget },
---     notification_preset = {
---         font = "Terminus (TTF) 10",
---         fg   = theme.fg_normal,
---         bg   = theme.bg_normal
---     }
--- })
-
 -- MEM
 local memicon = wibox.widget.imagebox(theme.widget_mem)
 local mem = lain.widget.mem({
@@ -202,7 +183,7 @@ local bat = lain.widget.bat({
             baticon:set_image(theme.widget_battery)
         end
 
-        widget:set_markup( markup.font(theme.font,
+        widget:set_markup(markup.font(theme.font,
             " " .. bat_now.n_perc[1] .. "% / " .. bat_now.n_perc[2] .. "%"))
     end
 })

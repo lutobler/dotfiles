@@ -65,6 +65,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'eagletmt/neco-ghc'
 Plug 'lervag/vimtex'
+Plug 'Konfekt/vim-DetectSpellLang'
 call plug#end()
 
 "deoplete
@@ -143,6 +144,7 @@ autocmd! BufWritePost *.lua Neomake
 " spell checking
 autocmd FileType gitcommit setlocal spell
 autocmd BufRead /tmp/neomutt-* setlocal spell
+let g:guesslang_langs = [ 'en_US', 'de_DE' ]
 
 "lightline
 if ($TERM != 'linux' && $TERM != 'xterm')

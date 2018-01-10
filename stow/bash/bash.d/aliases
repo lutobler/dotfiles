@@ -10,6 +10,7 @@ alias hc='herbstclient'
 alias r='ranger'
 alias v='vim'
 alias vim=nvim
+alias vimserver='rm /tmp/nvimsocket; NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim'
 alias m='make -j4'
 alias ls='ls -h --group-directories-first --color=auto'
 alias la='\ls -lah --group-directories-first --color=auto'

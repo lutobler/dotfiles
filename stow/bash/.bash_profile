@@ -12,7 +12,7 @@ export PATH=$PATH:/opt/jython/bin
 source $HOME/scripts/gnome_keyring_start.sh
 
 export HISTSIZE=
-export EDITOR=nvim
+export EDITOR=$HOME/scripts/txt-open.sh
 export VISUAL=nvim
 export XKB_DEFAULT_LAYOUT=ch
 export XKB_DEFAULT_OPTIONS='caps:swapescape'

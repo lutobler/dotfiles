@@ -48,6 +48,7 @@ endif
 Plug 'zchee/deoplete-jedi'
 Plug 'zchee/deoplete-clang'
 Plug 'Shougo/neco-vim'
+Plug 'fishbullet/deoplete-ruby'
 
 Plug 'itchyny/lightline.vim'
 Plug 'Yggdroot/indentLine'
@@ -66,6 +67,9 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'eagletmt/neco-ghc'
 Plug 'lervag/vimtex'
 Plug 'Konfekt/vim-DetectSpellLang'
+Plug 'rhysd/vim-grammarous'
+Plug 'chikamichi/mediawiki.vim'
+Plug 'fatih/vim-go'
 call plug#end()
 
 "deoplete
@@ -114,6 +118,7 @@ autocmd FileType xdefaults setlocal commentstring=!\ %s
 autocmd FileType cmake setlocal commentstring=#\ %s
 autocmd FileType c setlocal commentstring=//\ %s
 autocmd FileType cpp setlocal commentstring=//\ %s
+autocmd FileType mediawiki setlocal commentstring=<!--\ %s\ -->
 
 autocmd FileType c nnoremap <leader>p oprintf("\n");<Esc>4hi
 autocmd FileType c noremap <leader>d o__asm__("int $3");<Esc>
@@ -143,6 +148,7 @@ autocmd! BufWritePost *.lua Neomake
 
 " spell checking
 autocmd FileType gitcommit setlocal spell
+autocmd FileType markdown setlocal spell
 autocmd BufRead /tmp/neomutt-* setlocal spell
 let g:guesslang_langs = [ 'en_US', 'de_DE' ]
 

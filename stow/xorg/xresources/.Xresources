@@ -3,8 +3,8 @@
 ! #include "/home/luke/git/base16-xresources/xresources/base16-green-screen-256.Xresources"
 
 URxvt.scrollBar: false
-URxvt.font: xft:Inconsolata for Powerline:pixelsize=16
-! URxvt.font: -*-terminesspowerline-medium-*-*-*-16-*-*-*-*-*-*-*
+! URxvt.font: xft:Inconsolata for Powerline:pixelsize=16
+URxvt.font: -*-terminesspowerline-medium-*-*-*-16-*-*-*-*-*-*-*
 URxvt.cursorBlink: 1
 URxvt.perl-ext-common: resize-font
 URxvt.secondaryScreen: 1

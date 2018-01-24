@@ -30,4 +30,4 @@ alias 5xfs="jmtpfs ~/mnt/5x"
 alias firefox='firefox-beta'
 alias gti=git
 alias mutt=neomutt
-alias gdr='google-drive-ocamlfuse $HOME/mnt/googledrive'
+alias to=~/scripts/txt-open.sh

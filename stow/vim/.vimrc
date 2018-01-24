@@ -70,7 +70,17 @@ Plug 'Konfekt/vim-DetectSpellLang'
 Plug 'rhysd/vim-grammarous'
 Plug 'chikamichi/mediawiki.vim'
 Plug 'fatih/vim-go'
+Plug 'PotatoesMaster/i3-vim-syntax'
 call plug#end()
+
+"multiple cursors
+function! Multiple_cursors_before()
+    let b:deoplete_disable_auto_complete = 1
+endfunction
+
+function! Multiple_cursors_after()
+    let b:deoplete_disable_auto_complete = 0
+endfunction
 
 "deoplete
 let g:deoplete#enable_at_startup=1
@@ -122,7 +132,10 @@ autocmd FileType mediawiki setlocal commentstring=<!--\ %s\ -->
 
 autocmd FileType c nnoremap <leader>p oprintf("\n");<Esc>4hi
 autocmd FileType c noremap <leader>d o__asm__("int $3");<Esc>
-autocmd FileType cpp nnoremap <leader>p ostd::cout <<  << std::endl;<Esc>14hi
+
+autocmd FileType cpp nnoremap <leader>p ostd::cout <<  << std::endl;<Esc>13hi
+autocmd FileType cpp set colorcolumn&
+
 autocmd FileType python nnoremap <leader>d oimport pdb; pdb.set_trace()<esc>
 autocmd FileType markdown IndentLinesDisable
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -139,10 +152,10 @@ let g:neomake_buildpathmaker_maker = {
 \ 'cwd': 'build'
 \ }
 autocmd! BufWritePost * Neomake!
-autocmd! BufWritePost *.cc Neomake! buildpathmaker
-autocmd! BufWritePost *.cpp Neomake! buildpathmaker
-autocmd! BufWritePost *.h Neomake! buildpathmaker
-autocmd! BufWritePost *.hh Neomake! buildpathmaker
+" autocmd! BufWritePost *.cc Neomake! buildpathmaker
+" autocmd! BufWritePost *.cpp Neomake! buildpathmaker
+" autocmd! BufWritePost *.h Neomake! buildpathmaker
+" autocmd! BufWritePost *.hh Neomake! buildpathmaker
 autocmd! BufWritePost *.lua Neomake
 " au BufRead /tmp/neomutt-* set tw=72
 

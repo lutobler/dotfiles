@@ -10,6 +10,7 @@ package.path = package.path .. ';' .. HOME .. '/.config/vis/plugins/?/?.lua'
 require 'vis-commentary'
 require 'vis-modelines'
 require 'vis-surround'
+require 'vis-git-status'
 require 'plugins.vis-fzf-open.fzf-open'
 
 -- editor config

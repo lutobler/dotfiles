@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-stow_cmd="stow -t $HOME -d $PWD/stow"
+stow_cmd="stow -v -t $HOME -d $PWD/stow"
 
+echo 'symlinking config files ...'
 $stow_cmd vim
 $stow_cmd vis
 $stow_cmd xorg

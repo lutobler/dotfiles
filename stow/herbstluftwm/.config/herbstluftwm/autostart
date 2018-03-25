@@ -53,7 +53,7 @@ hc keybind $Mod-Control-k resize up +$resizestep
 hc keybind $Mod-Control-l resize right +$resizestep
 
 # tags
-tag_names=( {1..9} )
+tag_names=( '1 WEB' '2 MAILL' '3 TG' '4 FS' {5..9} )
 tag_keys=( {1..9} )
 
 hc rename default "${tag_names[0]}" || true
@@ -173,10 +173,8 @@ herbstclient set tree_style '╾│ ├└╼─┐'
 hc detect_monitors
 
 # panel
-panel=$HOME/.config/herbstluftwm/polybar.sh
-[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/polybar.sh
+panel=$HOME/.config/herbstluftwm/lemonbar.sh
+[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
 for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     "$panel" $monitor &
 done
-
-# $HOME/scripts/indicator-kdeconnect.sh &

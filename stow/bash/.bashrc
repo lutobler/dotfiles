@@ -7,6 +7,7 @@ trysource() { [[ -f "$1" ]] && source "$1"; }
 pwlterm() {
     [[ "$TERM" == rxvt-unicode-256color ]] || \
     [[ "$TERM" == screen-256color ]] || \
+    [[ "$TERM" == xterm-256color ]] || \
     [[ "$TERM" == xterm-termite ]] ||
     return $?
 }

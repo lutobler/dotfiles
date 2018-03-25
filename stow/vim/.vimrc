@@ -49,7 +49,10 @@ Plug 'zchee/deoplete-jedi'
 Plug 'zchee/deoplete-clang'
 Plug 'Shougo/neco-vim'
 Plug 'fishbullet/deoplete-ruby'
+Plug 'sebastianmarkow/deoplete-rust'
+" Plug 'artur-shaik/vim-javacomplete2'
 
+Plug 'jrozner/vim-antlr'
 Plug 'itchyny/lightline.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'jceb/vim-orgmode'
@@ -71,6 +74,9 @@ Plug 'rhysd/vim-grammarous'
 Plug 'chikamichi/mediawiki.vim'
 Plug 'fatih/vim-go'
 Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'igankevich/mesonic'
+Plug 'tomlion/vim-solidity'
+Plug 'jistr/vim-nerdtree-tabs'
 call plug#end()
 
 "multiple cursors
@@ -87,8 +93,24 @@ let g:deoplete#enable_at_startup=1
 let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
 let g:haskellmode_completion_ghc = 0
+let g:deoplete#sources#rust#racer_binary = '/usr/bin/racer'
+let g:deoplete#sources#rust#rust_source_path = '/lib/rustlib/src/rust/src'
+let g:deoplete#sources#rust#show_duplicates = 1
+let g:deoplete#sources#rust#disable_keymap = 1
+let g:deoplete#sources#rust#documentation_max_height = 20
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
+
+"deoplete java
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+nmap <F5> <Plug>(JavaComplete-Imports-Add)
+imap <F5> <Plug>(JavaComplete-Imports-Add)
+nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 
 " vimtex for deoplete
 if !exists('g:deoplete#omni#input_patterns')
@@ -101,6 +123,12 @@ let g:deoplete#omni#input_patterns.plaintex = g:vimtex#re#deoplete
 let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell set sw=2 ts=2 expandtab
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+"soft line movements (wrapped lines)map <silent> <Up> gk
+inoremap <silent> <Up> <C-o>gk
+noremap <silent> <Up> gk
+inoremap <silent> <Down> <C-o>gj
+noremap <silent> <Down> gj
 
 "leader keymappings
 let mapleader = ","
@@ -130,11 +158,11 @@ autocmd FileType c setlocal commentstring=//\ %s
 autocmd FileType cpp setlocal commentstring=//\ %s
 autocmd FileType mediawiki setlocal commentstring=<!--\ %s\ -->
 
-autocmd FileType c nnoremap <leader>p oprintf("\n");<Esc>4hi
+autocmd FileType c nnoremap <leader>p ofprintf(stdout, "\n");<Esc>4hi
 autocmd FileType c noremap <leader>d o__asm__("int $3");<Esc>
 
 autocmd FileType cpp nnoremap <leader>p ostd::cout <<  << std::endl;<Esc>13hi
-autocmd FileType cpp set colorcolumn&
+" autocmd FileType cpp set colorcolumn&
 
 autocmd FileType python nnoremap <leader>d oimport pdb; pdb.set_trace()<esc>
 autocmd FileType markdown IndentLinesDisable
@@ -144,20 +172,10 @@ autocmd FileType org set shiftwidth=4 tabstop=4
 "neomake
 let g:neomake_cpp_enabled_makers = ["clang", "cppcheck"]
 let g:neomake_cpp_clang_args = ['-std=c++14', '-Wextra', '-Wall', '-g']
-" let g:neomake_lua_enabled_makers = ["luacheck"]
+autocmd! BufWritePost * Neomake
+let g:neomake_tex_enabled_makers = ['chktex']
+let g:neomake_plaintex_enabled_makers = ['chktex']
 let g:neomake_lua_enabled_makers = []
-let g:neomake_buildpathmaker_maker = {
-\ 'exe': 'make',
-\ 'args': ['-j4'],
-\ 'cwd': 'build'
-\ }
-autocmd! BufWritePost * Neomake!
-" autocmd! BufWritePost *.cc Neomake! buildpathmaker
-" autocmd! BufWritePost *.cpp Neomake! buildpathmaker
-" autocmd! BufWritePost *.h Neomake! buildpathmaker
-" autocmd! BufWritePost *.hh Neomake! buildpathmaker
-autocmd! BufWritePost *.lua Neomake
-" au BufRead /tmp/neomutt-* set tw=72
 
 " spell checking
 autocmd FileType gitcommit setlocal spell
@@ -253,7 +271,7 @@ function! ToggleColorscheme()
         MyColorscheme base16-eighties
     end
 endfunction
-nnoremap <F5> :call ToggleColorscheme()<CR>
+" nnoremap <F5> :call ToggleColorscheme()<CR>
 
 "colorschemes
 if ($TERM != 'linux' && $TERM != 'xterm' && has("termguicolors"))

@@ -3,6 +3,8 @@ alias s2='cd ~/sync/eth/Semester\ 2'
 alias s3='cd ~/sync/eth/Semester\ 3'
 alias s4='cd ~/sync/eth/Semester\ 4'
 alias s5='cd ~/sync/eth/Semester_5'
+alias s6='cd ~/sync/eth/Semester_6'
+alias kek='cd ~/sync/eth/Semester_6/compiler_design/exercises/kekistan'
 
 alias snake=' mpv https://www.youtube.com/playlist?list=PLSb7Oi_91qhvgJwjzId2d_Oux3TeZTPsn --no-video --shuffle'
 alias s='systemctl suspend'
@@ -27,7 +29,10 @@ alias rpifs='sshfs alarm@luke.root.sx:/home/alarm ~/mnt/rpi -o transform_symlink
 alias desktop='TERM=xterm ssh luke@arch.home'
 alias desktopfs='sshfs luke@arch.home:/home/luke ~/mnt/desktop -o transform_symlinks -o follow_symlinks'
 alias 5xfs="jmtpfs ~/mnt/5x"
-alias firefox='firefox-beta'
 alias gti=git
 alias mutt=neomutt
 alias to=~/scripts/txt-open.sh
+alias n=ninja
+alias cb='cargo build'
+alias tmux='env TERM=xterm-256color tmux'
+alias t='urxvtc'

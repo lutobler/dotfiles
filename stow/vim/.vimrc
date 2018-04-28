@@ -50,7 +50,6 @@ Plug 'zchee/deoplete-clang'
 Plug 'Shougo/neco-vim'
 Plug 'fishbullet/deoplete-ruby'
 Plug 'sebastianmarkow/deoplete-rust'
-" Plug 'artur-shaik/vim-javacomplete2'
 
 Plug 'jrozner/vim-antlr'
 Plug 'itchyny/lightline.vim'
@@ -100,17 +99,6 @@ let g:deoplete#sources#rust#disable_keymap = 1
 let g:deoplete#sources#rust#documentation_max_height = 20
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
-
-"deoplete java
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-nmap <F5> <Plug>(JavaComplete-Imports-Add)
-imap <F5> <Plug>(JavaComplete-Imports-Add)
-nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 
 " vimtex for deoplete
 if !exists('g:deoplete#omni#input_patterns')
@@ -271,7 +259,7 @@ function! ToggleColorscheme()
         MyColorscheme base16-eighties
     end
 endfunction
-" nnoremap <F5> :call ToggleColorscheme()<CR>
+nnoremap <F5> :call ToggleColorscheme()<CR>
 
 "colorschemes
 if ($TERM != 'linux' && $TERM != 'xterm' && has("termguicolors"))

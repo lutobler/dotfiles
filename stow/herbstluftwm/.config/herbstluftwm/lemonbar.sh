@@ -13,7 +13,7 @@ y=${geometry[1]}
 width=$(( ${geometry[2]} - 54 )) # room for stalonetray
 font="-xos4-terminesspowerline-medium-*-normal-*-12-*-*-*-*-*-*-*"
 height=18
-update_interval=20
+update_interval=60
 tag_style="block" # text, block
 
 # global content variables
@@ -24,6 +24,7 @@ volume=
 muted=
 tags=
 linux=
+cd_perc=
 
 # colors
 whitefg="%{F#ffffff}"
@@ -72,6 +73,10 @@ get_current_tag() {
     done
 }
 
+get_cd_perc() {
+    curl -s creek.inf.ethz.ch:8000/out.html | grep kekistan | grep -Eo '>[0-9]+%' | cut -c 2-
+}
+
 update_vars() {
     datetime=$(date +'%H:%M %Y-%m-%d')
 	battery="BAT0: $(cat /sys/class/power_supply/BAT0/capacity)% / "
@@ -81,6 +86,7 @@ update_vars() {
     volume="${pulsehook[1]}"
     muted="${pulsehook[2]}"
     linux="LINUX $(uname -r)"
+    cd_perc="CD $(get_cd_perc)"
 }
 
 update_tags() {
@@ -149,6 +155,8 @@ event_handler() {
         echo -n "$linux  $separator  "      # kernel version
         echo -n "$temp  $separator  "       # temperature
         echo -n "$battery  $separator  "    # battery
+        echo -n "$battery  $separator  "    # battery
+        echo -n "$cd_perc  $separator  "
 
         # audio volume
         if [[ "$muted" != "muted" ]]; then

@@ -5,6 +5,7 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 PATH=$PATH:$HOME/scripts
+PATH=$PATH:$HOME/git/hlwm-projects
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 export PATH=$PATH:/opt/MATLAB/R2017b/bin
 # export PATH=$PATH:/opt/jython/bin

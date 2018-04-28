@@ -17,3 +17,9 @@ trysource ~/bash.d/functions
 trysource ~/bash.d/aliases
 trysource ~/.fzf.bash
 pwlterm && trysource ~/bash.d/ps1-powerline
+
+if [[ -n "$START_COMMAND" ]]; then
+    eval "$START_COMMAND"
+    unset START_COMMAND
+fi
+

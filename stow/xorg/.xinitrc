@@ -15,6 +15,8 @@ $HOME/scripts/wallpaper.sh &
 xset +fp $HOME/.fonts
 setxkbmap ch -option caps:swapescape
 
+xset r rate 180 50
+
 session=${2:-herbstluftwm}
 case "$session" in
     awesome)

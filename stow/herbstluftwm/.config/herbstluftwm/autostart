@@ -106,6 +106,7 @@ hc keybind $Mod-u spawn rofi -show run
 hc keybind $Mod-i spawn rofi-pass
 hc keybind $Mod-minus spawn $HOME/scripts/rofi_pdf.sh "$HOME/sync/eth/"
 hc keybind $Mod-apostrophe spawn $HOME/scripts/rofi_soundbrett.sh
+hc keybind $Mod-dead_circumflex spawn $HOME/scripts/rofi_projects.sh
 hc keybind $Mod-a spawn $HOME/scripts/screenshot.sh sel
 hc keybind $Mod-Shift-a spawn $HOME/scripts/screenshot.sh selxsel
 

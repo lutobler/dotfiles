@@ -4,7 +4,7 @@ alias s3='cd ~/sync/eth/Semester\ 3'
 alias s4='cd ~/sync/eth/Semester\ 4'
 alias s5='cd ~/sync/eth/Semester_5'
 alias s6='cd ~/sync/eth/Semester_6'
-alias kek='cd ~/sync/eth/Semester_6/compiler_design/exercises/kekistan'
+alias kek='cd ~/sync/eth/Semester_6/compiler_design/exercises/kekistan/HW4'
 
 alias snake=' mpv https://www.youtube.com/playlist?list=PLSb7Oi_91qhvgJwjzId2d_Oux3TeZTPsn --no-video --shuffle'
 alias s='systemctl suspend'

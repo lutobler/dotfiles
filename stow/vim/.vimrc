@@ -5,6 +5,7 @@
 " License: MIT (see https://github.com/lutobler/dotfiles
 "
 
+"settings
 set mouse=a
 set number
 set modeline
@@ -28,7 +29,7 @@ set colorcolumn=80
 set clipboard=unnamedplus
 syntax on
 
-"vim-plug
+"plugins
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-commentary'
@@ -76,6 +77,7 @@ Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'igankevich/mesonic'
 Plug 'tomlion/vim-solidity'
 Plug 'jistr/vim-nerdtree-tabs'
+" Plug 'vim-scripts/VisIncr'
 call plug#end()
 
 "multiple cursors
@@ -100,7 +102,7 @@ let g:deoplete#sources#rust#documentation_max_height = 20
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
 
-" vimtex for deoplete
+"vimtex for deoplete
 if !exists('g:deoplete#omni#input_patterns')
     let g:deoplete#omni#input_patterns = {}
 endif
@@ -134,7 +136,14 @@ nnoremap gn :tabnew<CR>
 nnoremap gl :tabmove -<CR>
 nnoremap gr :tabmove +<CR>
 nnoremap <F2> gg"+yG''
-nnoremap <F4> :!$PWD/build.sh<CR>
+
+"word count
+nnoremap <F4> g<C-g>
+" autocmd FileType tex nnoremap :w !detex \| wc -w<CR>
+" autocmd FileType plaintex nnoremap :w !detex \| wc -w<CR>
+
+"disable tex filetype in favour of plaintex
+autocmd FileType tex :set ft=plaintex
 
 "commentstrings for vim-commentary
 autocmd FileType matlab setlocal commentstring=%\ %s
@@ -147,8 +156,6 @@ autocmd FileType cpp setlocal commentstring=//\ %s
 autocmd FileType mediawiki setlocal commentstring=<!--\ %s\ -->
 
 autocmd FileType c nnoremap <leader>p ofprintf(stdout, "\n");<Esc>4hi
-autocmd FileType c noremap <leader>d o__asm__("int $3");<Esc>
-
 autocmd FileType cpp nnoremap <leader>p ostd::cout <<  << std::endl;<Esc>13hi
 " autocmd FileType cpp set colorcolumn&
 
@@ -165,7 +172,7 @@ let g:neomake_tex_enabled_makers = ['chktex']
 let g:neomake_plaintex_enabled_makers = ['chktex']
 let g:neomake_lua_enabled_makers = []
 
-" spell checking
+"spell checking
 autocmd FileType gitcommit setlocal spell
 autocmd FileType markdown setlocal spell
 autocmd BufRead /tmp/neomutt-* setlocal spell

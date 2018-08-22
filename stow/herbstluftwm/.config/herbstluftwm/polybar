@@ -1,0 +1,86 @@
+[colors]
+;foreground = #474c57
+;background = #88ffffff
+foreground = #ffffff
+background = #000000
+grey = #606060
+modb = #88ffffff
+modb1 = #88ffffff
+modb2 = #88ffffff
+accent_1 = #99cd61
+accent_2 = #f59335
+accent_3 = #ef6b7b
+accent_4 = #4ec2e8
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+override-redirect = true
+
+[bar/top]
+width = 100%
+height = 20
+offset-x = 0
+offset-y = 0
+background = ${colors.background}
+foreground = ${colors.foreground}
+font-0 = DejaVu Sans Book:size=9:antialias=true;1
+;font-0 = DejaVu Sans Mono:size=8:antialias=true;1
+modules-left = ewmh
+modules-right = cpu volume date
+tray-position = right
+tray-padding = 0
+tray-transparent = false
+tray-detached = false
+tray-background = ${colors.background}
+spacing = 1
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 0
+
+[module/volume]
+type = internal/volume
+format-volume = <ramp-volume><label-volume>
+format-volume-background = ${colors.background}
+format-volume-padding = 2
+module-margin-right = 0
+ramp-volume-0 = "A0 "
+ramp-volume-1 = "A1 "
+ramp-volume-2 = "A2 "
+ramp-volume-3 = "A3 "
+ramp-volume-foreground = ${colors.accent_2}
+label-muted = (m) muted
+
+[module/date]
+type = internal/date
+interval = 60
+date = " %a %d // %H:%M"
+;date = " %H:%M"
+format-prefix = "DATE "
+format-prefix-foreground = ${colors.accent_1}
+format-background = ${colors.background}
+format-padding = 2
+
+[module/ewmh]
+type = internal/xworkspaces
+enable-scroll = true
+format-padding = 0
+format-foreground = ${colors.accent_2}
+format-background = ${colors.background}
+
+label-active = "  %name%  "
+label-active-background = ${colors.grey}
+
+label-occupied = "  %name%  "
+label-empty = "  %name%  "
+label-urgent = "  %name%  "
+
+[module/cpu]
+type = internal/cpu
+label = %percentage%%
+format-prefix = "CPU  "
+format-prefix-foreground = ${colors.accent_3}
+format-background = ${colors.background}
+format-padding = 2
+

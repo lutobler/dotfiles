@@ -6,31 +6,30 @@
 urxvtd -q -f -o &
 redshift &
 nm-applet &
-unclutter -idle 3 &
+unclutter --timeout 3 &
 dunst &
 $HOME/scripts/dowloads_watcher.sh &
 $HOME/scripts/wallpaper.sh &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
-xset +fp $HOME/.fonts
 setxkbmap ch -option caps:swapescape
-
 xset r rate 180 50
+exec i3
 
-session=${2:-herbstluftwm}
-case "$session" in
-    awesome)
-        exec awesome
-        ;;
-    herbstluftwm)
-        exec herbstluftwm
-        ;;
-    i3)
-        exec i3
-        ;;
-    *)
-        echo "unknown WM"
-        exit 1
-        ;;
-esac
+# session=${2:-herbstluftwm}
+# case "$session" in
+#     awesome)
+#         exec awesome
+#         ;;
+#     herbstluftwm)
+#         exec herbstluftwm
+#         ;;
+#     i3)
+#         exec i3
+#         ;;
+#     *)
+#         echo "unknown WM"
+#         exit 1
+#         ;;
+# esac
 

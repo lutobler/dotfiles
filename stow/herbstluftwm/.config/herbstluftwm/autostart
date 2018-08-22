@@ -1,18 +1,12 @@
-#!/usr/bin/env bash
-
-# herbstluftwm config
-
-# wallpaper
-feh --bg-scale -z $HOME/sync/wallpaper/rotation &
+!/usr/bin/env bash
+# vim: set ft=bash:
 
 hc() { herbstclient "$@"; }
 
+feh --bg-scale -z $HOME/sync/wallpaper/rotation &
+
 hc emit_hook reload
-
-# remove all existing keybindings
 hc keyunbind --all
-
-# keybindings
 Mod=Mod4 # super key
 
 # next wallpaper
@@ -23,9 +17,7 @@ hc keybind $Mod-Shift-e quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-q close
 hc keybind $Mod-Return spawn urxvtc
-# hc keybind $Mod-Return spawn termite
 
-# basic movement
 # focusing clients
 hc keybind $Mod-h focus left
 hc keybind $Mod-j focus down
@@ -38,10 +30,10 @@ hc keybind $Mod-Shift-j shift down
 hc keybind $Mod-Shift-k shift up
 hc keybind $Mod-Shift-l shift right
 
-# splitting frames
 # create an empty frame at the specified direction
 hc keybind $Mod-b split bottom  0.5
 hc keybind $Mod-o split right   0.5
+
 # let the current frame explode into subframes
 hc keybind $Mod-odiaeresis split explode # Mod-ö
 
@@ -166,7 +158,9 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 # unlock, just to be sure
 hc unlock
 
-herbstclient set tree_style '╾│ ├└╼─┐'
+echo "REACHED"
+
+hc set tree_style '╾│ ├└╼─┐'
 
 # do multi monitor setup here, e.g.:
 # hc set_monitors 1280x1024+0+0 1280x1024+1280+0
@@ -174,8 +168,11 @@ herbstclient set tree_style '╾│ ├└╼─┐'
 hc detect_monitors
 
 # panel
-panel=$HOME/.config/herbstluftwm/lemonbar.sh
-[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
-for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
-    "$panel" $monitor &
-done
+#panel="polybar -c ~/.config/herbstluftwm/polybar top"
+#[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
+#for monitor in $(hc list_monitors | cut -d: -f1) ; do
+#    hc pad $monitor 20
+#done
+#pkill polybar
+#polybar -c ~/.config/herbstluftwm/polybar top &
+

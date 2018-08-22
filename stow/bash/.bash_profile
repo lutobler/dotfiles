@@ -12,8 +12,11 @@ export PATH=$PATH:/opt/MATLAB/R2017b/bin
 
 source $HOME/scripts/gnome_keyring_start.sh
 
+export ANDROID_SDK_ROOT=/home/luke/Android/Sdk
+
 export HISTSIZE=
 #export EDITOR=$HOME/scripts/txt-open.sh
+export export _JAVA_AWT_WM_NONREPARENTING=1
 export EDITOR=nvim
 export VISUAL=nvim
 export XKB_DEFAULT_LAYOUT=ch

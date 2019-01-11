@@ -1,0 +1,246 @@
+[colors]
+background = #222
+background-alt = #444
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+[bar/hlwm]
+monitor = ${env:MONITOR}
+width = 100%
+height = 20
+radius = 0.0
+fixed-center = false
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-size = 3
+line-color = #f00
+border-size = 0
+border-color = #00000000
+padding-left = 0
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
+font-0 = Inconsolata:antialias=true:style=bold:pixelsize=12;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
+modules-left = ewmh xwindow
+modules-center =
+modules-right = eth wlan pulseaudio battery1 battery0 date
+; modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu battery temperature date powermenu
+tray-position = right
+tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
+;wm-restack = bspwm
+;wm-restack = i3
+;override-redirect = true
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/ewmh]
+type = internal/xworkspaces
+; pin-workspaces = true
+enable-click = true
+enable-scroll = true
+label-active-padding = 1
+label-active = %index%
+label-active-foreground = #000000
+label-active-background = #9fbc00
+label-occupied-padding = 1
+label-occupied = %index%
+label-occupied-foreground = #000000
+label-occupied-background = #ff0000
+label-urgent-padding = 1
+label-urgent = %index%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-empty-padding = 1
+label-empty-foreground = ${colors.foreground}
+label-empty-background = #555555
+label-empty = %index%
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+format-connected = <ramp-signal> <label-connected>
+; format-connected-underline = #9f78e1
+label-connected = %essid%
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+ramp-signal-0 = 0
+ramp-signal-1 = 1
+ramp-signal-2 = 2
+ramp-signal-3 = 3
+ramp-signal-4 = 4
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/eth]
+type = internal/network
+interface = enp0s31f6
+interval = 3.0
+format-connected-prefix = "c "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+date =
+date-alt = " %Y-%m-%d"
+time = %H:%M
+time-alt = %H:%M:%S
+format-prefix-foreground = ${colors.foreground-alt}
+label = %date% %time%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL %percentage%%
+label-volume-foreground = ${root.foreground}
+label-muted = muted
+label-muted-foreground = #666
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery1]
+type = internal/battery
+battery = BAT1
+adapter = AC
+full-at = 98
+format-charging = <animation-charging> <label-charging>
+format-discharging = <animation-discharging> <label-discharging>
+format-full-prefix = "f "
+format-full-prefix-foreground = ${colors.foreground-alt}
+ramp-capacity-0 = 0
+ramp-capacity-1 = 1
+ramp-capacity-2 = 2
+ramp-capacity-foreground = ${colors.foreground-alt}
+animation-charging-0 = 0
+animation-charging-1 = 1
+animation-charging-2 = 2
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+animation-discharging-0 = 0
+animation-discharging-1 = 1
+animation-discharging-2 = 2
+animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 750
+
+[module/battery0]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+format-charging = <animation-charging> <label-charging>
+format-discharging = <animation-discharging> <label-discharging>
+format-full-prefix = "f "
+format-full-prefix-foreground = ${colors.foreground-alt}
+ramp-capacity-0 = 0
+ramp-capacity-1 = 1
+ramp-capacity-2 = 2
+ramp-capacity-foreground = ${colors.foreground-alt}
+animation-charging-0 = 0
+animation-charging-1 = 1
+animation-charging-2 = 2
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+animation-discharging-0 = 0
+animation-discharging-1 = 1
+animation-discharging-2 = 2
+animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 750
+
+;[module/temperature]
+;type = internal/temperature
+;thermal-zone = 0
+;warn-temperature = 60
+
+;format = <ramp> <label>
+;format-underline = #f50a4d
+;format-warn = <ramp> <label-warn>
+;format-warn-underline = ${self.format-underline}
+
+;label = %temperature-c%
+;label-warn = %temperature-c%
+;label-warn-foreground = ${colors.secondary}
+
+;ramp-0 = 
+;ramp-1 = 
+;ramp-2 = 
+;ramp-foreground = ${colors.foreground-alt}
+
+;[module/powermenu]
+;type = custom/menu
+
+;expand-right = true
+
+;format-spacing = 1
+
+;label-open = 
+;label-open-foreground = ${colors.secondary}
+;label-close =  cancel
+;label-close-foreground = ${colors.secondary}
+;label-separator = |
+;label-separator-foreground = ${colors.foreground-alt}
+
+;menu-0-0 = reboot
+;menu-0-0-exec = menu-open-1
+;menu-0-1 = power off
+;menu-0-1-exec = menu-open-2
+
+;menu-1-0 = cancel
+;menu-1-0-exec = menu-open-0
+;menu-1-1 = reboot
+;menu-1-1-exec = sudo reboot
+
+;menu-2-0 = power off
+;menu-2-0-exec = sudo poweroff
+;menu-2-1 = cancel
+;menu-2-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+; vim:ft=dosini

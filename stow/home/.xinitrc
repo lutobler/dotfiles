@@ -10,10 +10,12 @@ for x in "${xresources[@]}"; do
     [ -f "$x" ] && xrdb -merge "$x"
 done
 
+urxvtd -q -f -o &
 redshift &
 setxkbmap ch -option caps:swapescape
 xset r rate 180 50
 nm-applet &
+compton &
 $HOME/bin/downloads_watcher.sh &
 
 exec herbstluftwm

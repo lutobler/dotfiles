@@ -79,6 +79,7 @@ Plug 'lervag/vimtex', { 'for': ['tex', 'plaintex'] }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Konfekt/vim-DetectSpellLang', Cond(AspellInstalled())
 
+Plug 'dylon/vim-antlr'
 Plug 'itchyny/lightline.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'jceb/vim-orgmode'

@@ -1,9 +1,9 @@
-export PATH=$HOME/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH
+# export PATH=$HOME/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH
 export PATH=$HOME/Android/Sdk/platform-tools:$PATH
-export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+# export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/luke/.oh-my-zsh"
+export ZSH="/usr/share/oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,

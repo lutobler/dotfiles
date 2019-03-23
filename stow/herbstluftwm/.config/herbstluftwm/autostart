@@ -2,17 +2,17 @@
 
 hc() { herbstclient "$@"; }
 
-feh --bg-fill $HOME/pictures/wallpapers/l_ash17_big.jpg
+feh --bg-fill $HOME/pictures/wallpapers/ash.png
 
 hc emit_hook reload
 hc keyunbind --all
 Mod=Mod4
+default_term='urxvtc -depth 32 -bg [85]#2d2d2d'
 
 hc keybind XF86MonBrightnessDown spawn light -U 3
 hc keybind XF86MonBrightnessUp spawn light -A 3
-hc keybind $Mod-Alt-j spawn xbacklight -dec 3 -time 0 -steps 1
-hc keybind $Mod-Alt-k spawn xbacklight -inc 3 -time 0 -steps 1
-hc keybind XF86MonBrightnessDown spawn light -U 3
+hc keybind $Mod-Alt-j spawn light -U 3
+hc keybind $Mod-Alt-k spawn light -A 3
 
 hc keybind XF86AudioRaiseVolume spawn pamixer -i 3
 hc keybind XF86AudioLowerVolume spawn pamixer -d 3
@@ -28,7 +28,7 @@ hc keybind $Mod-i spawn rofi-pass
 hc keybind $Mod-Shift-e quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-q close
-hc keybind $Mod-Return spawn ${TERMINAL:-termite}
+hc keybind $Mod-Return spawn ${TERMINAL:-$default_term}
 
 hc keybind $Mod-h focus left
 hc keybind $Mod-j focus down

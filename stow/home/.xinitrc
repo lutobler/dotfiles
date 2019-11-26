@@ -15,8 +15,7 @@ redshift &
 setxkbmap ch -option caps:swapescape
 xset r rate 180 50
 nm-applet &
-compton &
+php -S localhost:8080 -t $HOME/workspace/startpage &
 $HOME/bin/downloads_watcher.sh &
 
 exec herbstluftwm
-

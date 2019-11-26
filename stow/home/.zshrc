@@ -1,6 +1,10 @@
 # export PATH=$HOME/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH
 export PATH=$HOME/Android/Sdk/platform-tools:$PATH
+export PATH=$PATH:$HOME/go/bin
+export PATH=$PATH:$HOME/bin
 # export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+#
+source ~/.fzf.zsh
 
 # Path to your oh-my-zsh installation.
 export ZSH="/usr/share/oh-my-zsh"
@@ -116,11 +120,24 @@ alias ve='source venv/bin/activate'
 
 alias uworld='sudo emerge --ask --verbose --update --deep --newuse @world'
 alias utime='emerge --pretend --update --deep --newuse @world | sudo genlop -pq'
+alias al='cd ~/ethz/master/algolab'
+alias t=task
+
+m() {
+    if [[ -f 'Makefile' ]]; then
+        make -j5
+    else
+        for f in *.cpp; do
+            base=${f%.*}
+            g++ -Wall -Wextra -Wpedantic -ggdb3 -O0 $f -o $base
+        done
+    fi
+}
 
 tortuga() {
     pirate-get -C 'peerflix "%s" -kdnt -f /var/tmp' "$@"
 }
 
 pf() {
-    peerflix "$@" -kdnt
+    peerflix "$@" -kdnt --path /var/tmp
 }

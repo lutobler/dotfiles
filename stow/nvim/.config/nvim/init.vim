@@ -67,16 +67,17 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 
-"only enable deoplete in neovim
-Plug 'Shougo/deoplete.nvim', Cond(has('nvim'), { 'do': ':UpdateRemotePlugins' })
-Plug 'zchee/deoplete-jedi', Cond(has('nvim'), { 'for': 'python' })
-Plug 'zchee/deoplete-clang', Cond(has('nvim'), { 'for': ['c', 'cpp'] })
-Plug 'Shougo/neco-vim', Cond(has('nvim'), { 'for': 'vim' })
-Plug 'fishbullet/deoplete-ruby', Cond(has('nvim'), { 'for': 'ruby' })
-Plug 'racer-rust/vim-racer', Cond(has('nvim'), { 'for': 'rust' })
+Plug 'Shougo/deoplete.nvim',            Cond(has('nvim'), { 'do': ':UpdateRemotePlugins' })
+Plug 'deoplete-plugins/deoplete-jedi',  Cond(has('nvim'), { 'for': 'python' })
+Plug 'deoplete-plugins/deoplete-clang', Cond(has('nvim'), { 'for': ['c', 'cpp'] })
+Plug 'deoplete-plugins/deoplete-go',    Cond(has('nvim'), { 'for': 'go' })
+Plug 'Shougo/neco-vim',                 Cond(has('nvim'), { 'for': 'vim' })
+Plug 'racer-rust/vim-racer',            Cond(has('nvim'), { 'for': 'rust' })
 
+Plug 'fatih/vim-go'
 Plug 'lervag/vimtex', { 'for': ['tex', 'plaintex'] }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
 Plug 'Konfekt/vim-DetectSpellLang', Cond(AspellInstalled())
 
 Plug 'dylon/vim-antlr'
@@ -88,12 +89,14 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'chriskempson/base16-vim'
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'igankevich/mesonic'
+Plug 'junegunn/fzf'
 call plug#end()
 
 if ($TERM != 'linux' && has("termguicolors"))
     set termguicolors
+    " set background=light
+    " colorscheme base16-one-light
     set background=dark
     colorscheme base16-eighties
     let base16colorspace=256
@@ -124,11 +127,11 @@ let g:deoplete#enable_at_startup=1
 let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
 let g:haskellmode_completion_ghc = 0
-" let g:deoplete#sources#rust#racer_binary = '/usr/bin/racer'
-" let g:deoplete#sources#rust#rust_source_path = '/opt/rust-bin-9999/lib/rustlib/x86_64-unknown-linux-gnu'
-" let g:deoplete#sources#rust#show_duplicates = 1
-" let g:deoplete#sources#rust#disable_keymap = 1
-" let g:deoplete#sources#rust#documentation_max_height = 20
+let g:deoplete#sources#rust#racer_binary = '/usr/bin/racer'
+let g:deoplete#sources#rust#rust_source_path = '/opt/rust-bin-9999/lib/rustlib/x86_64-unknown-linux-gnu'
+let g:deoplete#sources#rust#show_duplicates = 1
+let g:deoplete#sources#rust#disable_keymap = 1
+let g:deoplete#sources#rust#documentation_max_height = 20
 let g:deoplete#sources#jedi#python_path = '/usr/bin/python3'
 let g:racer_cmd = $HOME.'/.cargo/bin/racer'
 let g:racer_experimental_completer = 1
@@ -145,17 +148,17 @@ if exists('g:vimtex#re#deoplete')
 endif
 
 "neomake
-let g:neomake_cpp_enabled_makers = ["clang", "cppcheck"]
-let g:neomake_cpp_clang_args = ['-std=c++14', '-Wextra', '-Wall', '-g']
+" let g:neomake_cpp_enabled_makers = ["clang", "cppcheck"]
+let g:neomake_cpp_enabled_makers = ["clang"]
+let g:neomake_cpp_clang_args = ['-std=c++11', '-Wextra', '-Wall', '-g']
 let g:neomake_tex_enabled_makers = ['chktex']
 let g:neomake_plaintex_enabled_makers = ['chktex']
-let g:neomake_lua_enabled_makers = []
+" let g:neomake_lua_enabled_makers = []
 call neomake#configure#automake('w')
 
 let mapleader = ","
 let maplocalleader = ","
 noremap  <leader>n :noh<CR>
-nnoremap <leader>b :BufExplorer<CR>
 nnoremap <leader>f :FZF<CR>
 nnoremap <F3> :NERDTreeToggle<CR>
 nnoremap <C-h> gT
@@ -163,6 +166,7 @@ nnoremap <C-l> gt
 nnoremap gn :tabnew<CR>
 nnoremap gl :tabmove -<CR>
 nnoremap gr :tabmove +<CR>
+" nnoremap <leader>b :BufExplorer<CR>
 
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
@@ -172,28 +176,28 @@ else
 endif
 
 "commentstrings for vim-commentary
-autocmd FileType matlab setlocal commentstring=%\ %s
-autocmd FileType octave setlocal commentstring=%\ %s
-autocmd FileType vim setlocal commentstring=\"\ %s
-autocmd FileType xdefaults setlocal commentstring=!\ %s
-autocmd FileType cmake setlocal commentstring=#\ %s
-autocmd FileType c setlocal commentstring=//\ %s
-autocmd FileType cpp setlocal commentstring=//\ %s
-autocmd FileType mediawiki setlocal commentstring=<!--\ %s\ -->
+autocmd FileType matlab     setlocal commentstring=%\ %s
+autocmd FileType octave     setlocal commentstring=%\ %s
+autocmd FileType vim        setlocal commentstring=\"\ %s
+autocmd FileType xdefaults  setlocal commentstring=!\ %s
+autocmd FileType cmake      setlocal commentstring=#\ %s
+autocmd FileType c          setlocal commentstring=//\ %s
+autocmd FileType cpp        setlocal commentstring=//\ %s
+autocmd FileType mediawiki  setlocal commentstring=<!--\ %s\ -->
 
-autocmd FileType c nnoremap <leader>p ofprintf(stdout, "\n");<Esc>4hi
-autocmd FileType cpp nnoremap <leader>p ostd::cout <<  << std::endl;<Esc>13hi
-autocmd FileType cpp set colorcolumn&
+autocmd FileType c          nnoremap <leader>p ofprintf(stdout, "\n");<Esc>4hi
+autocmd FileType cpp        nnoremap <leader>p ofprintf(stdout, "\n");<Esc>4hi
+autocmd FileType python     nnoremap <leader>d oimport pdb; pdb.set_trace()<esc>
+autocmd FileType rust       nmap gd <Plug>(rust-def)
+autocmd FileType rust       nmap gs <Plug>(rust-def-split)
+autocmd FileType rust       nmap gx <Plug>(rust-def-vertical)
+autocmd FileType rust       nmap <leader>gd <Plug>(rust-doc)
 
-autocmd FileType python nnoremap <leader>d oimport pdb; pdb.set_trace()<esc>
-autocmd FileType markdown IndentLinesDisable
+autocmd FileType org        set shiftwidth=4 tabstop=4
+autocmd FileType go         set colorcolumn&
+autocmd FileType markdown   IndentLinesDisable
+
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-autocmd FileType org set shiftwidth=4 tabstop=4
-
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 "lightline
 if ($TERM != 'linux' && $TERM != 'xterm')

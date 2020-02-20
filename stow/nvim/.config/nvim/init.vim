@@ -86,7 +86,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'jceb/vim-orgmode'
 Plug 'neomake/neomake'
 Plug 'airblade/vim-gitgutter'
-Plug 'ntpeters/vim-better-whitespace'
+" Plug 'ntpeters/vim-better-whitespace'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'chriskempson/base16-vim'
 Plug 'igankevich/mesonic'
@@ -184,6 +184,7 @@ autocmd FileType cmake      setlocal commentstring=#\ %s
 autocmd FileType c          setlocal commentstring=//\ %s
 autocmd FileType cpp        setlocal commentstring=//\ %s
 autocmd FileType mediawiki  setlocal commentstring=<!--\ %s\ -->
+autocmd FileType oberon     setlocal commentstring=(*\ %s\ *)
 
 autocmd FileType c          nnoremap <leader>p ofprintf(stdout, "\n");<Esc>4hi
 autocmd FileType cpp        nnoremap <leader>p ofprintf(stdout, "\n");<Esc>4hi

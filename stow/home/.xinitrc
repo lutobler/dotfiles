@@ -16,6 +16,7 @@ setxkbmap ch -option caps:swapescape
 xset r rate 180 50
 nm-applet &
 php -S localhost:8080 -t $HOME/workspace/startpage &
+protonmail-bridge &
 $HOME/bin/downloads_watcher.sh &
 
 exec herbstluftwm

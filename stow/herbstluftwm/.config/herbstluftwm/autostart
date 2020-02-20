@@ -23,7 +23,7 @@ hc keybind $Mod+Alt+h spawn $HOME/bin/wmctl.sh suspend
 hc keybind $Mod+Alt+l spawn $HOME/bin/wmctl.sh lock
 
 hc keybind $Mod-u spawn rofi -show run
-hc keybind $Mod-m spawn qutebrowser
+hc keybind $Mod-m spawn firefox
 hc keybind $Mod-i spawn rofi-pass
 
 hc keybind $Mod-Shift-e quit

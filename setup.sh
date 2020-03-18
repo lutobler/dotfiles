@@ -11,5 +11,6 @@ $stow_cmd home
 $stow_cmd polybar
 $stow_cmd xdg-user-dirs
 $stow_cmd xresources
+$stow_cmd alacritty
 
 ln -sf $HOME/.config/nvim/init.vim $HOME/.vimrc

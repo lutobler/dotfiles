@@ -68,11 +68,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 
 Plug 'Shougo/deoplete.nvim',            Cond(has('nvim'), { 'do': ':UpdateRemotePlugins' })
-Plug 'deoplete-plugins/deoplete-jedi',  Cond(has('nvim'), { 'for': 'python' })
+" Plug 'deoplete-plugins/deoplete-jedi',  Cond(has('nvim'), { 'for': 'python' })
 Plug 'deoplete-plugins/deoplete-clang', Cond(has('nvim'), { 'for': ['c', 'cpp'] })
-Plug 'deoplete-plugins/deoplete-go',    Cond(has('nvim'), { 'for': 'go' })
-Plug 'Shougo/neco-vim',                 Cond(has('nvim'), { 'for': 'vim' })
-Plug 'racer-rust/vim-racer',            Cond(has('nvim'), { 'for': 'rust' })
+" Plug 'deoplete-plugins/deoplete-go',    Cond(has('nvim'), { 'for': 'go' })
+" Plug 'Shougo/neco-vim',                 Cond(has('nvim'), { 'for': 'vim' })
+" Plug 'racer-rust/vim-racer',            Cond(has('nvim'), { 'for': 'rust' })
 
 Plug 'fatih/vim-go'
 Plug 'lervag/vimtex', { 'for': ['tex', 'plaintex'] }
@@ -84,7 +84,7 @@ Plug 'dylon/vim-antlr'
 Plug 'itchyny/lightline.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'jceb/vim-orgmode'
-Plug 'neomake/neomake'
+" Plug 'neomake/neomake'
 Plug 'airblade/vim-gitgutter'
 " Plug 'ntpeters/vim-better-whitespace'
 Plug 'terryma/vim-multiple-cursors'
@@ -115,11 +115,11 @@ function! Multiple_cursors_after()
 endfunction
 
 "spell checking
-set spelllang=en
-autocmd FileType gitcommit setlocal spell
-autocmd FileType plaintex setlocal spell
-autocmd FileType markdown setlocal spell
-autocmd BufRead /tmp/neomutt-* setlocal spell
+" set spelllang=en
+" autocmd FileType gitcommit setlocal spell
+" autocmd FileType plaintex setlocal spell
+" autocmd FileType markdown setlocal spell
+" autocmd BufRead /tmp/neomutt-* setlocal spell
 let g:guesslang_langs = [ 'en_US', 'de_DE' ]
 
 "deoplete
@@ -149,12 +149,12 @@ endif
 
 "neomake
 " let g:neomake_cpp_enabled_makers = ["clang", "cppcheck"]
-let g:neomake_cpp_enabled_makers = ["clang"]
-let g:neomake_cpp_clang_args = ['-std=c++11', '-Wextra', '-Wall', '-g']
-let g:neomake_tex_enabled_makers = ['chktex']
-let g:neomake_plaintex_enabled_makers = ['chktex']
-" let g:neomake_lua_enabled_makers = []
-call neomake#configure#automake('w')
+" let g:neomake_cpp_enabled_makers = ["clang"]
+" let g:neomake_cpp_clang_args = ['-std=c++11', '-Wextra', '-Wall', '-g']
+" let g:neomake_tex_enabled_makers = ['chktex']
+" let g:neomake_plaintex_enabled_makers = ['chktex']
+" " let g:neomake_lua_enabled_makers = []
+" call neomake#configure#automake('w')
 
 let mapleader = ","
 let maplocalleader = ","

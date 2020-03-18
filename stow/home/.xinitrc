@@ -1,14 +1,9 @@
 #!/bin/sh
 
-xresources=(
-    "$HOME/.config/xresources/Xresources"
-    "$HOME/xresources/Xresources"
-    "$HOME/.Xresources"
-)
-
-for x in "${xresources[@]}"; do
-    [ -f "$x" ] && xrdb -merge "$x"
-done
+try_merge() { [ -f "$1" ] && xrdb -merge "$1"; }
+try_merge "$HOME/.config/xresources/Xresources"
+try_merge "$HOME/xresources/Xresources"
+try_merge "$HOME/.Xresources"
 
 urxvtd -q -f -o &
 redshift &

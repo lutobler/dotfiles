@@ -5,12 +5,13 @@ try_merge "$HOME/.config/xresources/Xresources"
 try_merge "$HOME/xresources/Xresources"
 try_merge "$HOME/.Xresources"
 
-urxvtd -q -f -o &
+#urxvtd -q -f -o &
 redshift &
+unclutter &
 setxkbmap ch -option caps:swapescape
 xset r rate 180 50
 nm-applet &
-protonmail-bridge &
+protonmail-bridge --noninteractive &
 $HOME/bin/downloads_watcher.sh &
 
 exec herbstluftwm

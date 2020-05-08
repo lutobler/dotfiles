@@ -3,6 +3,9 @@ export EDITOR='nvim'
 export TPM2TOOLS_TCTI=device:/dev/tpmrm0
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+xset r rate 180 50
+setxkbmap ch -option caps:swapescape
+
 PS1=${(j::Q)${(Z:Cn:):-$'
     %F{cyan}%f
     %(!.%F{red}%n%f.%F{green}%n%f)
@@ -59,10 +62,12 @@ alias reboot='systemctl reboot'
 alias poweroff='systemctl poweroff'
 alias hc=herbstclient
 alias ve='source venv/bin/activate'
-alias asl='cd ~/ethz/master/advanced-systems-lab/asl'
+alias asl='cd ~/ethz/master/asl/team001/'
 
 alias uworld='sudo emerge --ask --verbose --update --deep --newuse @world'
 alias utime='emerge --pretend --update --deep --newuse @world | sudo genlop -pq'
+
+eval "$(lua /usr/share/z.lua/z.lua --init zsh)"
 
 m() {
     if [[ -f 'Makefile' ]]; then

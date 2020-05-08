@@ -2,7 +2,7 @@
 
 hc() { herbstclient "$@"; }
 
-feh --bg-fill $HOME/pictures/wallpapers/wp0.jpg
+feh --bg-fill --no-xinerama $HOME/pictures/wallpapers/wp0.jpg
 
 hc emit_hook reload
 hc keyunbind --all
@@ -26,9 +26,10 @@ hc keybind $Mod+y spawn $HOME/bin/expert-code-submit.sh
 hc keybind $Mod-u spawn rofi -show run
 hc keybind $Mod-z spawn $HOME/bin/rofi_pdf.sh
 hc keybind $Mod-t spawn $HOME/bin/rofi_hcr.sh
-hc keybind $Mod-m spawn firefox
+hc keybind $Mod-m spawn qutebrowser
 hc keybind $Mod-i spawn rofi-pass
 hc keybind $Mod-n spawn $HOME/bin/q3terminal.sh
+hc keybind $Mod-a spawn $HOME/bin/screenshot.sh
 
 hc keybind $Mod-Shift-e quit
 hc keybind $Mod-Shift-r reload
@@ -98,6 +99,7 @@ hc keybind $Mod-Shift-Tab   cycle_all -1
 hc keybind $Mod-c cycle
 # hc keybind $Mod-i jumpto urgent
 
+# hc set verbose 1
 hc attr theme.tiling.reset 1
 hc attr theme.floating.reset 1
 hc set frame_border_active_color '#222222'

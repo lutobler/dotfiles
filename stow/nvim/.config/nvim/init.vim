@@ -48,7 +48,6 @@ endif
 let plugin_dir = '~/.vim/plugged'
 endif
 
-
 "check if aspell is installed
 function! AspellInstalled()
     let out=system('type aspell')
@@ -81,7 +80,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'chriskempson/base16-vim'
 Plug 'igankevich/mesonic'
-Plug 'fatih/vim-go'
+" Plug 'fatih/vim-go'
 Plug 'lervag/vimtex', { 'for': ['tex', 'plaintex'] }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Konfekt/vim-DetectSpellLang', Cond(AspellInstalled())
@@ -91,7 +90,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'Shougo/deoplete.nvim', Cond(has('nvim'), { 'do': ':UpdateRemotePlugins' })
 Plug 'deoplete-plugins/deoplete-jedi', Cond(has('nvim'), { 'for': 'python' })
 Plug 'deoplete-plugins/deoplete-clang', Cond(has('nvim'), { 'for': ['c', 'cpp'] })
-" Plug 'deoplete-plugins/deoplete-go', Cond(has('nvim'), { 'for': 'go' })
+Plug 'deoplete-plugins/deoplete-go', Cond(has('nvim'), { 'for': 'go' })
 Plug 'Shougo/neco-vim', Cond(has('nvim'), { 'for': 'vim' })
 Plug 'racer-rust/vim-racer', Cond(has('nvim'), { 'for': 'rust' })
 call plug#end()
@@ -138,6 +137,9 @@ if exists('g:vimtex#re#deoplete')
     let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
     let g:deoplete#omni#input_patterns.plaintex = g:vimtex#re#deoplete
 endif
+
+"golang
+let g:deoplete#sources#go#gocode_binary = $HOME.'/go/bin/gocode'
 
 "neomake
 call neomake#configure#automake('w')

@@ -1,4 +1,6 @@
-export PATH=$PATH:$HOME/bin
+# export PATH=$PATH:$HOME/bin:$HOME/intel/system_studio_2020/bin
+# export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/go/bin
 export EDITOR='nvim'
 export TPM2TOOLS_TCTI=device:/dev/tpmrm0
 export SSH_KEY_PATH="~/.ssh/rsa_id"

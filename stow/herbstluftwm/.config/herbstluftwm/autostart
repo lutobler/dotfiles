@@ -9,6 +9,7 @@ hc keyunbind --all
 Mod=Mod4
 # default_term='urxvtc -depth 32 -bg [85]#2d2d2d'
 default_term='alacritty'
+# default_term='urxvtc'
 
 hc keybind XF86MonBrightnessDown spawn xbacklight -dec 5
 hc keybind XF86MonBrightnessUp spawn xbacklight -inc 5
@@ -83,9 +84,13 @@ hc keybind $Mod-s floating toggle
 hc keybind $Mod-f fullscreen toggle
 hc keybind $Mod-p pseudotile toggle
 
+# hc keybind $Mod-space                                                           \
+#             or , and . compare tags.focus.curframe_wcount = 2                   \
+#                      . cycle_layout +1 vertical horizontal max vertical grid    \
+#                , cycle_layout +1
 hc keybind $Mod-space                                                           \
             or , and . compare tags.focus.curframe_wcount = 2                   \
-                     . cycle_layout +1 vertical horizontal max vertical grid    \
+                     . cycle_layout +1 vertical max horizontal vertical         \
                , cycle_layout +1
 
 hc mouseunbind --all
@@ -144,21 +149,16 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 hc set tree_style '╾│ ├└╼─┐'
 
 hc unlock
-
 hc detect_monitors
-# hc set_monitors 1920x1080+0+0
 
-# panel=~/.config/herbstluftwm/panel.sh
-# [ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
-# for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
-#     # start it on each monitor
-#     "$panel" $monitor &
-# done
-
-for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
-    hc pad "$monitor" 20
-done
-for m in $(polybar --list-monitors | cut -d":" -f1); do
-    MONITOR=$m polybar --reload hlwm &
-done
+x_offset=0
+ms="$(herbstclient list_monitors)"
+while IFS= read -r m; do
+    num=$(cut -d':' -f1 <<< "$m")
+    dimensions=$(cut -d' ' -f2 <<< "$m")
+    width=$(cut -d'x' -f1 <<< "$dimensions")
+    herbstclient pad "$num" 20
+    $HOME/git/ggbar/target/release/ggbar "$x_offset" 0 "$width" 20 "$num" &
+    x_offset=$(($xoffset + $width))
+done <<< "$ms"
 

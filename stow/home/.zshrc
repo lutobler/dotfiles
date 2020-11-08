@@ -1,6 +1,5 @@
-# export PATH=$PATH:$HOME/bin:$HOME/intel/system_studio_2020/bin
-# export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/go/bin
+export PATH=$PATH:$HOME/bin:$HOME/intel/system_studio_2020/bin
 export EDITOR='nvim'
 export TPM2TOOLS_TCTI=device:/dev/tpmrm0
 export SSH_KEY_PATH="~/.ssh/rsa_id"
@@ -64,7 +63,7 @@ alias reboot='systemctl reboot'
 alias poweroff='systemctl poweroff'
 alias hc=herbstclient
 alias ve='source venv/bin/activate'
-alias asl='cd ~/ethz/master/asl/team001/'
+alias asl='cd ~/ethz/master/advanced-systems-lab/team001'
 
 alias uworld='sudo emerge --ask --verbose --update --deep --newuse @world'
 alias utime='emerge --pretend --update --deep --newuse @world | sudo genlop -pq'

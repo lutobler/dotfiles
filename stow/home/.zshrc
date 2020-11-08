@@ -63,12 +63,6 @@ alias reboot='systemctl reboot'
 alias poweroff='systemctl poweroff'
 alias hc=herbstclient
 alias ve='source venv/bin/activate'
-alias asl='cd ~/ethz/master/advanced-systems-lab/team001'
-
-alias uworld='sudo emerge --ask --verbose --update --deep --newuse @world'
-alias utime='emerge --pretend --update --deep --newuse @world | sudo genlop -pq'
-
-eval "$(lua /usr/share/z.lua/z.lua --init zsh)"
 
 m() {
     if [[ -f 'Makefile' ]]; then
@@ -81,8 +75,6 @@ m() {
     fi
 }
 
+syncstat() { watch -d grep -e Dirty: -e Writeback: /proc/meminfo; }
 tortuga() { pirate-get -C 'peerflix "%s" -kdnt -f /var/tmp' "$@"; }
 pf() { peerflix "$@" -kdnt --path /var/tmp; }
-
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-

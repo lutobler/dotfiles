@@ -22,7 +22,6 @@ hc keybind XF86AudioMute spawn pamixer -t
 
 hc keybind $Mod+Alt+h spawn $HOME/bin/wmctl.sh suspend
 hc keybind $Mod+Alt+l spawn $HOME/bin/wmctl.sh lock
-hc keybind $Mod+y spawn $HOME/bin/expert-code-submit.sh
 
 hc keybind $Mod-u spawn rofi -show run
 hc keybind $Mod-z spawn $HOME/bin/rofi_pdf.sh

@@ -17,6 +17,9 @@ nm-applet &
 protonmail-bridge --noninteractive &
 $HOME/bin/downloads_watcher.sh &
 # lxqt-policykit-agent &
-eval $(ssh-agent)
+dbus-update-activation-environment --systemd DISPLAY
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
+# eval $(ssh-agent)
 
 exec herbstluftwm

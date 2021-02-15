@@ -184,6 +184,7 @@ autocmd FileType rust       nmap <leader>gd <Plug>(rust-doc)
 autocmd FileType org        set shiftwidth=4 tabstop=4
 autocmd FileType go         set colorcolumn&
 autocmd FileType markdown   IndentLinesDisable
+autocmd FileType spthy      set shiftwidth=2 tabstop=2
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 

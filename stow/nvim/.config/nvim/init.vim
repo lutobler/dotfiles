@@ -85,6 +85,7 @@ Plug 'lervag/vimtex', { 'for': ['tex', 'plaintex'] }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Konfekt/vim-DetectSpellLang', Cond(AspellInstalled())
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'junegunn/vim-easy-align'
 
 "autocomplete
 Plug 'Shougo/deoplete.nvim', Cond(has('nvim'), { 'do': ':UpdateRemotePlugins' })
@@ -161,6 +162,11 @@ if has('nvim')
 else
     nnoremap vrc :e ~/.vimrc<CR>
 endif
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 "commentstrings for vim-commentary
 autocmd FileType matlab     setlocal commentstring=%\ %s

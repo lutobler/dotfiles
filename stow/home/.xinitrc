@@ -21,5 +21,7 @@ dbus-update-activation-environment --systemd DISPLAY
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 # eval $(ssh-agent)
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export QT_SCREEN_SCALE_FACTORS=1.5
 
 exec herbstluftwm

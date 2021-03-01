@@ -156,8 +156,8 @@ while IFS= read -r m; do
     num=$(cut -d':' -f1 <<< "$m")
     dimensions=$(cut -d' ' -f2 <<< "$m")
     width=$(cut -d'x' -f1 <<< "$dimensions")
-    herbstclient pad "$num" 20
-    $HOME/git/ggbar/target/release/ggbar "$x_offset" 0 "$width" 20 "$num" &
+    herbstclient pad "$num" 33
+    $HOME/git/ggbar/target/release/ggbar "$x_offset" 0 "$width" 33 "$num" &
     x_offset=$(($xoffset + $width))
 done <<< "$ms"
 

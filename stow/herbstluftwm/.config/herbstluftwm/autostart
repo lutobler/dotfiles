@@ -2,7 +2,7 @@
 
 hc() { herbstclient "$@"; }
 
-feh --bg-fill --no-xinerama $HOME/pictures/wallpapers/wp0.jpg
+feh --bg-fill --no-xinerama $HOME/pictures/wallpapers/space.png
 
 hc emit_hook reload
 hc keyunbind --all
@@ -24,6 +24,7 @@ hc keybind $Mod+Alt+h spawn $HOME/bin/wmctl.sh suspend
 hc keybind $Mod+Alt+l spawn $HOME/bin/wmctl.sh lock
 
 hc keybind $Mod-u spawn rofi -show run
+hc keybind $Mod-e spawn rofi -show emoji -modi emoji
 hc keybind $Mod-z spawn $HOME/bin/rofi_pdf.sh
 hc keybind $Mod-t spawn $HOME/bin/rofi_hcr.sh
 hc keybind $Mod-m spawn qutebrowser

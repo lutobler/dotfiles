@@ -11,8 +11,8 @@ try_source "$HOME/.screenlayout/default.sh"
 # urxvtd -q -f -o &
 redshift &
 unclutter &
-setxkbmap ch -option caps:swapescape
 xset r rate 180 50
+setxkbmap ch
 nm-applet &
 protonmail-bridge --noninteractive &
 $HOME/bin/downloads_watcher.sh &

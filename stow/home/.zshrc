@@ -2,7 +2,6 @@ export PATH=$PATH:$HOME/go/bin
 export EDITOR='nvim'
 
 xset r rate 180 50
-setxkbmap ch -option caps:swapescape
 
 PS1=${(j::Q)${(Z:Cn:):-$'
     %F{cyan}%f

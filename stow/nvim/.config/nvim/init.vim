@@ -71,15 +71,15 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
-Plug 'dylon/vim-antlr'
+" Plug 'dylon/vim-antlr'
 Plug 'itchyny/lightline.vim'
 Plug 'Yggdroot/indentLine'
-Plug 'jceb/vim-orgmode'
+" Plug 'jceb/vim-orgmode'
 Plug 'neomake/neomake'
 Plug 'airblade/vim-gitgutter'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'chriskempson/base16-vim'
-Plug 'igankevich/mesonic'
+" Plug 'igankevich/mesonic'
 " Plug 'fatih/vim-go'
 Plug 'lervag/vimtex', { 'for': ['tex', 'plaintex'] }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -129,6 +129,15 @@ let g:detectspelllang_langs.aspell = [ 'en_US', 'de_DE' ]
 let g:deoplete#enable_at_startup=1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
+
+"fix a bug with multiple cursors+deoplete
+" function! Multiple_cursors_before()
+"     exe deoplete#toggle()
+" endfunction
+
+" function! Multiple_cursors_after()
+"     exe deoplete#toggle()
+" endfunction
 
 "vimtex for deoplete
 if exists('g:vimtex#re#deoplete')

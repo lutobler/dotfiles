@@ -1,7 +1,4 @@
-export PATH=$PATH:$HOME/go/bin
 export EDITOR='nvim'
-
-xset r rate 180 50
 
 PS1=${(j::Q)${(Z:Cn:):-$'
     %F{cyan}%f
@@ -59,6 +56,9 @@ alias reboot='systemctl reboot'
 alias poweroff='systemctl poweroff'
 alias hc=herbstclient
 alias ve='source venv/bin/activate'
+alias ault='ssh -J ltobler@ela.cscs.ch ltobler@ault.cscs.ch'
+alias ault-copy-pwd='scp -r -J ltobler@ela.cscs.ch $PWD ltobler@ault.cscs.ch:'
+alias msc='cd ~/ethz/master/thesis/msc-lutobler-gpuless'
 
 m() {
     if [[ -f 'Makefile' ]]; then

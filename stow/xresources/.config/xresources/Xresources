@@ -3,8 +3,8 @@
 
 URxvt.scrollBar: false
 ! URxvt.font: -*-terminess-medium-*-*-*-16-*-*-*-*-*-*-*
-URxvt.font: -*-terminus-medium-*-*-*-16-*-*-*-*-*-*-*
-! URxvt.font: xft:Inconsolata:pixelsize=16
+! URxvt.font: -*-terminus-medium-*-*-*-16-*-*-*-*-*-*-*
+URxvt.font: xft:Inconsolata:pixelsize=16
 URxvt.cursorBlink: 1
 ! URxvt.perl-ext-common: resize-font
 URxvt.secondaryScreen: 1

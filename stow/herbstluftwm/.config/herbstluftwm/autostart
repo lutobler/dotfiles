@@ -2,7 +2,7 @@
 
 hc() { herbstclient "$@"; }
 
-feh --bg-fill --no-xinerama $HOME/pictures/wallpapers/space.png
+feh --bg-fill --no-xinerama $HOME/pictures/wallpapers/wp2.jpg
 
 hc emit_hook reload
 hc keyunbind --all
@@ -13,8 +13,10 @@ default_term='alacritty'
 
 hc keybind XF86MonBrightnessDown spawn xbacklight -dec 5
 hc keybind XF86MonBrightnessUp spawn xbacklight -inc 5
-hc keybind $Mod-Alt-j spawn xbacklight -dec 5
-hc keybind $Mod-Alt-k spawn xbacklight -inc 5
+# hc keybind $Mod-Alt-j spawn xbacklight -dec 5
+# hc keybind $Mod-Alt-k spawn xbacklight -inc 5
+hc keybind $Mod-Alt-j spawn ddcutil setvcp 10 - 5
+hc keybind $Mod-Alt-k spawn ddcutil setvcp 10 + 5
 
 hc keybind XF86AudioRaiseVolume spawn pamixer -i 3
 hc keybind XF86AudioLowerVolume spawn pamixer -d 3
@@ -24,13 +26,14 @@ hc keybind $Mod+Alt+h spawn $HOME/bin/wmctl.sh suspend
 hc keybind $Mod+Alt+l spawn $HOME/bin/wmctl.sh lock
 
 hc keybind $Mod-u spawn rofi -show run
-hc keybind $Mod-e spawn rofi -show emoji -modi emoji
+hc keybind $Mod-e spawn rofimoji
 hc keybind $Mod-z spawn $HOME/bin/rofi_pdf.sh
 hc keybind $Mod-t spawn $HOME/bin/rofi_hcr.sh
 hc keybind $Mod-m spawn qutebrowser
 hc keybind $Mod-i spawn rofi-pass
 hc keybind $Mod-n spawn $HOME/bin/q3terminal.sh
 hc keybind $Mod-a spawn $HOME/bin/screenshot.sh
+hc keybind $Mod-w spawn $HOME/bin/alacritty-sel.sh
 
 hc keybind $Mod-Shift-e quit
 hc keybind $Mod-Shift-r reload
@@ -57,7 +60,9 @@ hc keybind $Mod-Control-j resize down +$resizestep
 hc keybind $Mod-Control-k resize up +$resizestep
 hc keybind $Mod-Control-l resize right +$resizestep
 
-tag_names=( {1..9} )
+# tag_names=( '1 web' '2 com' '3 reading' 4 5 6 7 8 9 f1 f2 f3 f4 f5 f6 f7 f8 f9)
+# tag_keys=( {1..9} F1 F2 F3 F4 F5 F6 F7 F8 F9)
+tag_names=( '1 web' '2 com' 3 4 5 6 7 8 9 )
 tag_keys=( {1..9} )
 
 hc rename default "${tag_names[0]}" || true
@@ -157,8 +162,8 @@ while IFS= read -r m; do
     num=$(cut -d':' -f1 <<< "$m")
     dimensions=$(cut -d' ' -f2 <<< "$m")
     width=$(cut -d'x' -f1 <<< "$dimensions")
-    herbstclient pad "$num" 33
-    $HOME/git/ggbar/target/release/ggbar "$x_offset" 0 "$width" 33 "$num" &
+    herbstclient pad "$num" 35
+    $HOME/git/ggbar/target/release/ggbar "$x_offset" 0 "$width" 35 "$num" &
     x_offset=$(($xoffset + $width))
 done <<< "$ms"
 

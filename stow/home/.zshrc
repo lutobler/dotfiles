@@ -59,17 +59,7 @@ alias ve='source venv/bin/activate'
 alias ault='ssh -J ltobler@ela.cscs.ch ltobler@ault.cscs.ch'
 alias ault-copy-pwd='scp -r -J ltobler@ela.cscs.ch $PWD ltobler@ault.cscs.ch:'
 alias msc='cd ~/ethz/master/thesis/msc-lutobler-gpuless'
-
-m() {
-    if [[ -f 'Makefile' ]]; then
-        make -j5
-    else
-        for f in *.cpp; do
-            base=${f%.*}
-            g++ -Wall -Wextra -Wpedantic -ggdb3 -O2 $f -o $base
-        done
-    fi
-}
+alias make='make -j9'
 
 syncstat() { watch -d grep -e Dirty: -e Writeback: /proc/meminfo; }
 tortuga() { pirate-get -C 'peerflix "%s" -kdnt -f /var/tmp' "$@"; }
